@@ -434,3 +434,61 @@ function showToast(message, type = 'success') {
         }, 500); // Esperar que termine animación CSS
     }, 4000);
 }
+
+/* ==========================================================================
+   10. WOW FACTOR (Interactive Particles & Dynamic Glow)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Dynamic Glow Cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    });
+
+    // 2. tsParticles (Neural Network / Constellation effect)
+    if (typeof tsParticles !== 'undefined') {
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, links: { opacity: 1 } }
+                }
+            },
+            particles: {
+                color: { value: "#f97316" }, // Naranja primario
+                links: {
+                    color: "#f97316",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: { default: "bounce" }
+                },
+                number: {
+                    density: { enable: true, area: 800 },
+                    value: 60
+                },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } }
+            },
+            detectRetina: true
+        });
+    }
+});

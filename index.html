@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- ===== FRONTEND SECURITY (Anti-Hijacking / Anti-Infostealer) ===== -->
+    <!-- CSP restringe orígenes de scripts para evitar XSS y fuga de datos -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none';">
+    <!-- Anti-Clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
+    <!-- ===== SEO PRIMARIO ===== -->
+    <title>Nexora Digital | Desarrollo de Software, CRM, E-Commerce &amp; Automatización con IA en Colombia</title>
+    <meta name="description" content="Nexora Digital es una empresa colombiana de desarrollo de software. Creamos CRM empresariales, tiendas e-commerce, automatización con inteligencia artificial, bots RPA, apps móviles y soluciones fintech. Más de 10 proyectos entregados con tecnología de vanguardia.">
+    <meta name="keywords" content="desarrollo software Colombia, CRM empresarial Colombia, e-commerce personalizado, automatización IA, bot RPA SENA, app móvil Android, fintech Colombia, Supabase, React, Next.js, desarrollo web Pasto, software a medida">
+    <meta name="author" content="Nexora Digital">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://nexoradigital.com/">
+    
+    <!-- ===== FAVICONS ===== -->
+    <link rel="icon" type="image/png" href="icono Nexora Digital.png">
+    <link rel="apple-touch-icon" href="icono Nexora Digital Grande.png">
+
+    <!-- ===== GEO / AEO — Structured Data ===== -->
+    <!-- Datos para motores generativos (ChatGPT, Gemini, Perplexity) -->
+    <meta name="geo.region" content="CO">
+    <meta name="geo.placename" content="Colombia">
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    <meta property="og:site_name" content="Nexora Digital">
+    <meta property="og:title" content="Nexora Digital — Desarrollo de Software &amp; Automatización con IA en Colombia">
+    <meta property="og:description" content="Creamos CRM empresariales, tiendas e-commerce, bots con IA y apps móviles. +10 proyectos entregados con tecnología de vanguardia. Lo que viene es ahora.">
+    <meta property="og:url" content="https://nexoradigital.com/">
+
+    <!-- ===== TWITTER CARDS ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexora Digital — Software &amp; IA en Colombia">
+    <meta name="twitter:description" content="Desarrollo de software a medida: CRM, e-commerce, automatización con IA, apps móviles. Lo que viene es ahora.">
+
+    <!-- ===== JSON-LD: ProfessionalService (GEO/LLMO) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://nexoradigital.com/#organization",
+        "name": "Nexora Digital",
+        "alternateName": "Nexora",
+        "description": "Nexora Digital es una empresa colombiana de desarrollo de software especializada en CRM empresariales, e-commerce, automatización RPA con inteligencia artificial, aplicaciones móviles Android y soluciones fintech. Con más de 10 proyectos entregados, Nexora Digital utiliza tecnologías como React, Next.js, TypeScript, Supabase, Google Gemini AI, Node.js y Python para crear soluciones digitales de alto impacto.",
+        "url": "https://nexoradigital.com",
+        "telephone": "+573239306599",
+        "email": "jaisonrodriguez@gmail.com",
+        "founder": {
+            "@type": "Person",
+            "name": "Jaison Rodriguez",
+            "jobTitle": "Desarrollador Full Stack & Arquitecto de Software"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Colombia"
+        },
+        "knowsAbout": [
+            "Desarrollo de Software a Medida",
+            "CRM Empresarial",
+            "E-Commerce",
+            "Automatización RPA",
+            "Inteligencia Artificial",
+            "Google Gemini AI",
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Node.js",
+            "Python",
+            "Supabase",
+            "Aplicaciones Móviles Android",
+            "Kotlin",
+            "Jetpack Compose",
+            "Fintech",
+            "Zero Trust Architecture"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Desarrollo de Software",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Desarrollo de E-Commerce",
+                        "description": "Tiendas online con pagos integrados, personalización de productos y panel administrativo"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "CRM Empresarial a Medida",
+                        "description": "Sistemas CRM con roles, dashboards, reportes y seguridad de nivel bancario"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Automatización con Inteligencia Artificial",
+                        "description": "Bots RPA, automatización de procesos, calificación automática con Google Gemini AI"
+                    }
+                }
+            ]
+        },
+        "sameAs": [
+            "https://wa.me/573239306599",
+            "https://t.me/Jaison_Rodriguez"
+        ]
+    }
+    </script>
+
+    <!-- ===== JSON-LD: SoftwareApplication (AutoZajuna Pro) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AutoZajuna Pro",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Windows 10, Windows 11",
+        "description": "Software de automatización con inteligencia artificial para instructores SENA. Automatiza calificación de evidencias, extracción de perfiles, edición masiva de fechas y generación de reportes en la plataforma Zajuna/Territorio usando Google Gemini AI.",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Plan Básico",
+                "price": "80000",
+                "priceCurrency": "COP",
+                "billingIncrement": "P1M",
+                "description": "1 licencia, calificación manual, soporte email"
+            },
+            {
+                "@type": "Offer",
+                "name": "Plan Profesional",
+                "price": "150000",
+                "priceCurrency": "COP",
+                "billingIncrement": "P1M",
+                "description": "1 licencia, IA Gemini incluida, calificación automática, actualizaciones"
+            },
+            {
+                "@type": "Offer",
+                "name": "Plan Enterprise",
+                "price": "350000",
+                "priceCurrency": "COP",
+                "billingIncrement": "P1M",
+                "description": "3 licencias, IA Gemini, soporte prioritario WhatsApp, capacitación"
+            }
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Nexora Digital"
+        }
+    }
+    </script>
+
+    <!-- ===== JSON-LD: FAQPage (AEO) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Qué es AutoZajuna Pro y cómo ayuda a instructores SENA?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AutoZajuna Pro es un software de escritorio para Windows que automatiza la calificación de evidencias en la plataforma Zajuna/Territorio del SENA. Utiliza inteligencia artificial (Google Gemini) para evaluar entregas estudiantiles, generar retroalimentación formativa y asignar calificaciones automáticamente. También permite edición masiva de fechas, extracción de perfiles y generación de reportes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto cuesta desarrollar un CRM empresarial a medida en Colombia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El desarrollo de un CRM empresarial a medida en Colombia comienza desde $5.000.000 COP. El precio varía según la complejidad, número de módulos, integraciones requeridas y nivel de seguridad. Nexora Digital utiliza tecnologías como React, TypeScript y Supabase para crear CRMs con dashboards, gestión de roles, reportes automatizados y seguridad de nivel bancario."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué tecnologías utiliza Nexora Digital para desarrollar software?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nexora Digital utiliza un stack tecnológico moderno que incluye React 19, Next.js, TypeScript, Node.js, Python, Supabase (PostgreSQL), Google Gemini AI, Redis, Tailwind CSS, Kotlin con Jetpack Compose para Android, y herramientas de automatización como Playwright. Todas las soluciones siguen arquitecturas Zero Trust y mejores prácticas de seguridad."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cómo funciona el proceso de desarrollo de un proyecto con Nexora Digital?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El proceso de desarrollo en Nexora Digital sigue 4 fases: 1) Consulta inicial gratuita donde entendemos tus necesidades, 2) Diseño y prototipado donde definimos la arquitectura y UX, 3) Desarrollo iterativo con entregas parciales y feedback constante, 4) Lanzamiento, capacitación y soporte continuo. Cada proyecto incluye documentación completa y código fuente."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Nexora Digital ofrece soporte y mantenimiento después de la entrega?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, todos los proyectos incluyen 30 días de soporte post-entrega sin costo adicional. Después, ofrecemos planes de mantenimiento mensual que incluyen actualizaciones de seguridad, corrección de bugs y soporte técnico prioritario por WhatsApp o Telegram."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Pueden integrar inteligencia artificial en mi proyecto?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, Nexora Digital tiene experiencia comprobada integrando inteligencia artificial con Google Gemini AI en proyectos reales. Podemos implementar chatbots inteligentes, procesamiento automático de documentos, calificación con IA, análisis de datos y más. Nuestro producto estrella AutoZajuna Pro es un ejemplo de integración exitosa de IA."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== JSON-LD: BreadcrumbList (SEO) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://nexoradigital.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://nexoradigital.com/#servicios" },
+            { "@type": "ListItem", "position": 3, "name": "Proyectos", "item": "https://nexoradigital.com/#proyectos" },
+            { "@type": "ListItem", "position": 4, "name": "Software", "item": "https://nexoradigital.com/#software" },
+            { "@type": "ListItem", "position": 5, "name": "Contacto", "item": "https://nexoradigital.com/#contacto" }
+        ]
+    }
+    </script>
+
+    <!-- ===== FUENTES ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- ===== ICONOS ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ===== EMAILJS SDK ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- ===== ESTILOS ===== -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- NAVBAR                                       -->
+    <!-- ============================================ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container container">
+            <a href="#inicio" class="nav-logo" aria-label="Nexora Digital - Inicio">
+                <img src="Logo Nexora Digital.jpg" alt="Nexora Digital Logo">
+            </a>
+
+            <div class="nav-links" id="nav-links" role="menubar">
+                <a href="#servicios" class="nav-link" role="menuitem">Servicios</a>
+                <a href="#proyectos" class="nav-link" role="menuitem">Proyectos</a>
+                <a href="#software" class="nav-link" role="menuitem">Software</a>
+                <a href="#precios" class="nav-link" role="menuitem">Precios</a>
+                <a href="#faq" class="nav-link" role="menuitem">FAQ</a>
+                <a href="#contacto" class="nav-cta" role="menuitem">
+                    <i class="fa-solid fa-paper-plane"></i> Solicitar Cotización
+                </a>
+            </div>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- HERO                                         -->
+    <!-- ============================================ -->
+    <header class="hero" id="inicio">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="hero-glow-1" aria-hidden="true"></div>
+        <div class="hero-glow-2" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+            <div class="hero-badge animate-on-scroll">
+                <span class="hero-badge-dot"></span>
+                Desarrollo de Software &amp; Automatización con IA
+            </div>
+
+            <h1 class="hero-title animate-on-scroll delay-1">
+                Transformamos tus ideas en <br>
+                <span class="gradient-text"><span class="typing-text"></span><span class="typing-cursor">|</span></span>
+            </h1>
+
+            <p class="hero-subtitle animate-on-scroll delay-2">
+                Somos <strong>Nexora Digital</strong> — <em>Lo que viene es ahora.</em> 
+                Creamos software a medida, CRM empresariales, e-commerce y soluciones de automatización con inteligencia artificial para empresas en Colombia y Latinoamérica.
+            </p>
+
+            <div class="hero-ctas animate-on-scroll delay-3">
+                <a href="#servicios" class="btn-primary">
+                    Explorar Servicios <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="https://wa.me/573239306599?text=Hola%20Nexora%20Digital%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="btn-glass">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
+                </a>
+            </div>
+
+            <div class="hero-stats animate-on-scroll delay-4">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Proyectos Entregados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Sectores Atendidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Tecnologías Dominadas</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+    <!-- ============================================ -->
+    <!-- SERVICIOS                                    -->
+    <!-- ============================================ -->
+    <section class="section" id="servicios" aria-labelledby="servicios-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title" id="servicios-title">Soluciones digitales que impulsan tu negocio</h2>
+                <p class="section-subtitle">Desde tiendas online hasta ecosistemas empresariales completos con inteligencia artificial</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Servicio 1: E-Commerce -->
+                <article class="service-card animate-on-scroll delay-1" id="srv-ecommerce">
+                    <div class="service-icon si-ecommerce">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="service-title">E-Commerce &amp; Tiendas Online</h3>
+                    <p class="service-desc">Tiendas web con pagos integrados (Wompi, Stripe), personalización de productos en tiempo real, catálogos dinámicos y panel administrativo completo.</p>
+                    <a href="#contacto" class="service-link">Cotizar ahora <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 2: Automatización & IA -->
+                <article class="service-card animate-on-scroll delay-2" id="srv-automatizacion">
+                    <div class="service-icon si-ai">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="service-title">Automatización &amp; Bots con IA</h3>
+                    <p class="service-desc">Bots RPA, automatización de procesos, calificación automática con Google Gemini AI, web scraping inteligente y bots de WhatsApp.</p>
+                    <a href="#software" class="service-link">Ver AutoZajuna Pro <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 3: CRM -->
+                <article class="service-card animate-on-scroll delay-3" id="srv-crm">
+                    <div class="service-icon si-crm">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="service-title">CRM &amp; Sistemas Empresariales</h3>
+                    <p class="service-desc">Sistemas a medida con roles (RBAC), dashboards analíticos, reportes automáticos en PDF/Excel, seguridad de nivel bancario y Row Level Security.</p>
+                    <a href="#proyectos" class="service-link">Ver proyectos <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 4: Apps Móviles -->
+                <article class="service-card animate-on-scroll delay-4" id="srv-mobile">
+                    <div class="service-icon si-mobile">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="service-title">Aplicaciones Móviles</h3>
+                    <p class="service-desc">Apps Android nativas con Kotlin y Jetpack Compose. Material Design 3, notificaciones push, integración con APIs y servicios en la nube.</p>
+                    <a href="#contacto" class="service-link">Cotizar ahora <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 5: Fintech -->
+                <article class="service-card animate-on-scroll delay-1" id="srv-fintech">
+                    <div class="service-icon si-fintech">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <h3 class="service-title">Fintech &amp; Soluciones Financieras</h3>
+                    <p class="service-desc">Simuladores de crédito, calculadoras financieras, plataformas de libranza y herramientas para instituciones financieras con normativa colombiana.</p>
+                    <a href="#contacto" class="service-link">Cotizar ahora <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 6: Diseño Web -->
+                <article class="service-card animate-on-scroll delay-2" id="srv-diseno">
+                    <div class="service-icon si-design">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Diseño Web &amp; Landing Pages</h3>
+                    <p class="service-desc">Portafolios profesionales, invitaciones digitales premium con video y música, landings de alta conversión con SEO y neuromarketing aplicado.</p>
+                    <a href="#contacto" class="service-link">Cotizar ahora <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 7: Datos & BI -->
+                <article class="service-card animate-on-scroll delay-3" id="srv-datos">
+                    <div class="service-icon si-data">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+                    <h3 class="service-title">Análisis de Datos &amp; BI</h3>
+                    <p class="service-desc">Dashboards interactivos en Power BI, pipelines de datos con Python y Pandas, visualizaciones profesionales y reportes automatizados.</p>
+                    <a href="#contacto" class="service-link">Cotizar ahora <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Servicio 8: Consultoría -->
+                <article class="service-card animate-on-scroll delay-4" id="srv-consultoria">
+                    <div class="service-icon si-security">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="service-title">Consultoría en Arquitectura</h3>
+                    <p class="service-desc">Arquitecturas Zero Trust, Supabase Row Level Security, políticas CSP, auditorías de seguridad, diseño de APIs seguras y escalables.</p>
+                    <a href="#contacto" class="service-link">Agendar consulta <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PROYECTOS                                    -->
+    <!-- ============================================ -->
+    <section class="section section-alt" id="proyectos" aria-labelledby="proyectos-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Portafolio</span>
+                <h2 class="section-title" id="proyectos-title">Proyectos que hablan por nosotros</h2>
+                <p class="section-subtitle">Desde ecosistemas B2B completos hasta software de escritorio comercial con inteligencia artificial</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="projects-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="crm">CRM</button>
+                <button class="filter-btn" data-filter="saas">SaaS</button>
+                <button class="filter-btn" data-filter="fintech">Fintech</button>
+                <button class="filter-btn" data-filter="automatizacion">Automatización</button>
+                <button class="filter-btn" data-filter="diseno">Diseño</button>
+            </div>
+
+            <!-- Grid de Proyectos -->
+            <div class="projects-grid">
+
+                <!-- Proyecto: ArtDesign Tienda -->
+                <article class="project-card animate-on-scroll" data-category="ecommerce">
+                    <div class="project-visual pv-indigo">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">ArtDesign Tienda</h3>
+                        <p class="project-desc">E-commerce de ropa personalizable. Editor canvas en tiempo real con Fabric.js para diseñar prendas en 4 vistas. Pagos Wompi, panel admin, gestión de roles y sincronización con Zoho CRM.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React 19</span>
+                            <span class="project-tag">Fabric.js</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">Wompi</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://artdesigntienda.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Viabot -->
+                <article class="project-card animate-on-scroll" data-category="crm">
+                    <div class="project-visual pv-fuchsia">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-plane-departure"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Viabot — Ecosistema CRM</h3>
+                        <p class="project-desc">Plataforma B2B para agencias de viajes. API Zero Trust con Express + Redis + BullMQ. CRM Next.js con accesibilidad extrema, WhatsApp híbrido y conexión Sabre para reservas aéreas globales.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Express</span>
+                            <span class="project-tag">Redis</span>
+                            <span class="project-tag">Sabre API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contacto" class="project-btn project-btn-ghost">
+                                <i class="fa-solid fa-envelope"></i> Solicitar Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Micrep CRM -->
+                <article class="project-card animate-on-scroll" data-category="crm fintech">
+                    <div class="project-visual pv-blue">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Libranza CRM — Micrep</h3>
+                        <p class="project-desc">CRM financiero para gestión de créditos por libranza. Simulador de capacidad de crédito, Vista 360° del cliente, generación automática de contratos PDF, PQRS y gestión de cartera.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">jsPDF</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://micrep-crm.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: AgendaClick -->
+                <article class="project-card animate-on-scroll" data-category="saas">
+                    <div class="project-visual pv-emerald">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">AgendaClick — SaaS de Citas</h3>
+                        <p class="project-desc">Plataforma SaaS multi-tenant para salones de belleza, spas y clínicas estéticas. Agenda online, gestión de staff, Google Maps, verificación OTP y dashboard financiero.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">Google Maps</span>
+                            <span class="project-tag">Resend</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://agendaclick.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Fintech Libranza -->
+                <article class="project-card animate-on-scroll" data-category="fintech">
+                    <div class="project-visual pv-amber">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Fintech Libranza</h3>
+                        <p class="project-desc">Landing page y simulador de crédito por libranza para docentes y pensionados colombianos. Calculadora de cuota mensual, formulario de solicitud y dashboard de seguimiento.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">React 19</span>
+                            <span class="project-tag">App Router</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contacto" class="project-btn project-btn-ghost">
+                                <i class="fa-solid fa-envelope"></i> Más Info
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Firma Contable -->
+                <article class="project-card animate-on-scroll" data-category="automatizacion">
+                    <div class="project-visual pv-teal">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Automatización Contable</h3>
+                        <p class="project-desc">Plataforma IA para firmas contables colombianas. Sincronización con Siigo, cumplimiento DIAN Radian, OCR de facturas, prevención de sanciones y ahorro de 145+ horas operativas.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">IA</span>
+                            <span class="project-tag">Siigo</span>
+                            <span class="project-tag">DIAN</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contacto" class="project-btn project-btn-ghost">
+                                <i class="fa-solid fa-envelope"></i> Solicitar Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Invitaciones Digitales -->
+                <article class="project-card animate-on-scroll" data-category="diseno">
+                    <div class="project-visual pv-rose">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Invitaciones Digitales Premium</h3>
+                        <p class="project-desc">Invitaciones web cinematográficas con fondos de video, música, animaciones con partículas, countdown, RSVP por WhatsApp y ubicación Google Maps. Experiencia immersiva de lujo.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Video</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contacto" class="project-btn project-btn-ghost">
+                                <i class="fa-solid fa-envelope"></i> Cotizar
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Proyecto: Dashboard BI -->
+                <article class="project-card animate-on-scroll" data-category="diseno">
+                    <div class="project-visual pv-cyan">
+                        <div class="project-icon-wrapper">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Dashboards Power BI</h3>
+                        <p class="project-desc">Generación de datasets, visualizaciones y dashboards interactivos para análisis de datos. Pipelines de datos con Python, Pandas y Matplotlib para inteligencia de negocios.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pandas</span>
+                            <span class="project-tag">Power BI</span>
+                            <span class="project-tag">Matplotlib</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contacto" class="project-btn project-btn-ghost">
+                                <i class="fa-solid fa-envelope"></i> Cotizar
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SOFTWARE — AUTOZAJUNA PRO                    -->
+    <!-- ============================================ -->
+    <section class="section software-section" id="software" aria-labelledby="software-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Producto Estrella</span>
+                <h2 class="section-title" id="software-title">AutoZajuna Pro</h2>
+                <p class="section-subtitle">El software de automatización con IA que transforma la calificación de evidencias para instructores SENA</p>
+            </div>
+
+            <!-- Software Hero -->
+            <div class="software-hero animate-on-scroll">
+                <div class="software-info">
+                    <div class="badge-scarcity">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>Solo 5 licencias disponibles este mes</span>
+                    </div>
+
+                    <h3 class="software-headline">Califica evidencias en minutos, no en horas</h3>
+                    <p class="software-desc">
+                        AutoZajuna Pro es un software de escritorio para Windows que automatiza completamente la calificación de evidencias en la plataforma Zajuna/Territorio del SENA. Utiliza inteligencia artificial de Google Gemini para evaluar entregas, generar retroalimentación formativa y asignar calificaciones automáticamente.
+                    </p>
+
+                    <ul class="software-features">
+                        <li class="feature-item">
+                            <i class="fa-solid fa-microchip"></i>
+                            <div>
+                                <strong>IA Google Gemini</strong>
+                                <span>Evalúa documentos PDF, DOCX y PPTX contra criterios pedagógicos automáticamente</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <div>
+                                <strong>6 Modos de Operación</strong>
+                                <span>Deep Scan, Revisión Pendiente, Edición Masiva, Perfiles, Calificación IA, Unificador PDF</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fa-solid fa-key"></i>
+                            <div>
+                                <strong>Licencia por Equipo</strong>
+                                <span>Vinculación segura por Machine ID con almacenamiento encriptado en Windows</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <div>
+                                <strong>Actualizaciones Automáticas</strong>
+                                <span>Siempre tendrás la última versión sin descargas manuales</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="software-visual">
+                    <div class="software-mockup">
+                        <div class="mockup-header">
+                            <span class="mockup-dot dot-red"></span>
+                            <span class="mockup-dot dot-yellow"></span>
+                            <span class="mockup-dot dot-green"></span>
+                            <span class="mockup-title">AutoZajuna Pro v2.3</span>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-menu-item active"><i class="fa-solid fa-magnifying-glass"></i> Deep Scan</div>
+                                <div class="mockup-menu-item"><i class="fa-solid fa-clock"></i> Pendientes</div>
+                                <div class="mockup-menu-item"><i class="fa-solid fa-calendar"></i> Fechas</div>
+                                <div class="mockup-menu-item"><i class="fa-solid fa-users"></i> Perfiles</div>
+                                <div class="mockup-menu-item highlight"><i class="fa-solid fa-brain"></i> IA Gemini</div>
+                                <div class="mockup-menu-item"><i class="fa-solid fa-file-pdf"></i> Unificar</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="mockup-stat-row">
+                                    <div class="mockup-stat"><span>247</span>Evidencias</div>
+                                    <div class="mockup-stat accent"><span>98%</span>Calificadas</div>
+                                    <div class="mockup-stat"><span>3min</span>Promedio</div>
+                                </div>
+                                <div class="mockup-progress">
+                                    <div class="mockup-progress-bar"></div>
+                                </div>
+                                <div class="mockup-log">
+                                    <div class="log-line success">✓ Evaluando: Maria_Gomez_Ev3.pdf — 85/100</div>
+                                    <div class="log-line success">✓ Evaluando: Carlos_Lopez_Act2.docx — 92/100</div>
+                                    <div class="log-line processing">⟳ Procesando: Ana_Torres_Taller.pdf...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="pricing-grid animate-on-scroll">
+                <!-- Plan Básico -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <span class="pricing-plan">Básico</span>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>80.000
+                            <span class="pricing-period">COP/mes</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> 1 licencia por equipo</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Deep Scan y edición masiva</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Revisión de pendientes</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Extracción de perfiles</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Soporte por email</li>
+                        <li class="pricing-feature disabled"><i class="fa-solid fa-xmark"></i> Calificación con IA Gemini</li>
+                        <li class="pricing-feature disabled"><i class="fa-solid fa-xmark"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="https://wa.me/573239306599?text=Hola%2C%20quiero%20adquirir%20AutoZajuna%20Pro%20plan%20B%C3%A1sico" target="_blank" rel="noopener noreferrer" class="pricing-cta">Quiero este plan</a>
+                </div>
+
+                <!-- Plan Profesional (FEATURED) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">⭐ Más Popular</div>
+                    <div class="pricing-header">
+                        <span class="pricing-plan">Profesional</span>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>150.000
+                            <span class="pricing-period">COP/mes</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> 1 licencia por equipo</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Todos los modos de operación</li>
+                        <li class="pricing-feature highlight"><i class="fa-solid fa-star"></i> Calificación con IA Gemini</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Retroalimentación automática</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Actualizaciones automáticas</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Reportes en Excel</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Soporte por WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/573239306599?text=Hola%2C%20quiero%20adquirir%20AutoZajuna%20Pro%20plan%20Profesional" target="_blank" rel="noopener noreferrer" class="pricing-cta cta-featured">Empezar Ahora</a>
+                </div>
+
+                <!-- Plan Enterprise -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <span class="pricing-plan">Enterprise</span>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>350.000
+                            <span class="pricing-period">COP/mes</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature highlight"><i class="fa-solid fa-star"></i> 3 licencias por equipo</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Todos los modos de operación</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Calificación con IA Gemini</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Retroalimentación automática</li>
+                        <li class="pricing-feature"><i class="fa-solid fa-check"></i> Actualizaciones automáticas</li>
+                        <li class="pricing-feature highlight"><i class="fa-solid fa-star"></i> Soporte prioritario WhatsApp</li>
+                        <li class="pricing-feature highlight"><i class="fa-solid fa-star"></i> Capacitación personalizada</li>
+                    </ul>
+                    <a href="https://wa.me/573239306599?text=Hola%2C%20quiero%20adquirir%20AutoZajuna%20Pro%20plan%20Enterprise" target="_blank" rel="noopener noreferrer" class="pricing-cta">Contactar Ventas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PRECIOS DE SERVICIOS                         -->
+    <!-- ============================================ -->
+    <section class="section" id="precios" aria-labelledby="precios-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Inversión</span>
+                <h2 class="section-title" id="precios-title">Precios de Servicios de Desarrollo</h2>
+                <p class="section-subtitle">Inversión transparente para cada tipo de proyecto. Todos incluyen código fuente y 30 días de soporte post-entrega.</p>
+            </div>
+
+            <div class="pricing-table-wrapper animate-on-scroll">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Inversión Desde</th>
+                            <th>Incluye</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-palette table-icon ti-design"></i>
+                                    <span>Landing Page Premium</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$800.000 COP</strong></td>
+                            <td>Diseño responsivo, SEO, formulario de contacto, hosting guidance</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-envelope-open-text table-icon ti-invitation"></i>
+                                    <span>Invitación Digital Premium</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$250.000 COP</strong></td>
+                            <td>Video, música, animaciones, RSVP WhatsApp, Google Maps</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-chart-column table-icon ti-data"></i>
+                                    <span>Dashboard Power BI</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$1.500.000 COP</strong></td>
+                            <td>Pipeline de datos, visualizaciones, datasets, capacitación</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-robot table-icon ti-bot"></i>
+                                    <span>Bot / Automatización RPA</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$2.000.000 COP</strong></td>
+                            <td>Web scraping, automatización, integración IA, empaquetado .exe</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-cart-shopping table-icon ti-ecommerce"></i>
+                                    <span>E-Commerce Completo</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$3.500.000 COP</strong></td>
+                            <td>Catálogo, carrito, pagos, panel admin, SEO, responsive</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-mobile-screen-button table-icon ti-mobile"></i>
+                                    <span>App Móvil Android</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$4.000.000 COP</strong></td>
+                            <td>Kotlin, Jetpack Compose, Material 3, API integración, Play Store</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-building table-icon ti-crm"></i>
+                                    <span>CRM / Sistema Empresarial</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$5.000.000 COP</strong></td>
+                            <td>Roles RBAC, dashboards, reportes PDF/Excel, RLS, seguridad</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Cotizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-service">
+                                    <i class="fa-solid fa-shield-halved table-icon ti-consult"></i>
+                                    <span>Consultoría en Arquitectura</span>
+                                </div>
+                            </td>
+                            <td><strong class="table-price">$120.000 COP<span class="price-unit">/hora</span></strong></td>
+                            <td>Zero Trust, auditoría de seguridad, diseño de APIs, RLS</td>
+                            <td><a href="#contacto" class="pricing-table-cta">Agendar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- STACK TECNOLÓGICO                            -->
+    <!-- ============================================ -->
+    <section class="section section-alt" id="tecnologias" aria-labelledby="tech-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Stack Tecnológico</span>
+                <h2 class="section-title" id="tech-title">Tecnologías de vanguardia</h2>
+                <p class="section-subtitle">Herramientas modernas con las que construimos arquitecturas robustas y escalables</p>
+            </div>
+
+            <div class="tech-grid animate-on-scroll">
+                <div class="tech-item" data-tooltip="React 19 / Next.js 16">
+                    <i class="fa-brands fa-react tech-icon"></i>
+                    <span class="tech-name">React / Next.js</span>
+                </div>
+                <div class="tech-item" data-tooltip="Tipado estático y seguro">
+                    <i class="fa-brands fa-js tech-icon"></i>
+                    <span class="tech-name">TypeScript</span>
+                </div>
+                <div class="tech-item" data-tooltip="Backend & APIs REST">
+                    <i class="fa-brands fa-node-js tech-icon"></i>
+                    <span class="tech-name">Node.js</span>
+                </div>
+                <div class="tech-item" data-tooltip="Automatización & Data Science">
+                    <i class="fa-brands fa-python tech-icon"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+                <div class="tech-item" data-tooltip="Base de datos & Auth BaaS">
+                    <i class="fa-solid fa-database tech-icon"></i>
+                    <span class="tech-name">Supabase</span>
+                </div>
+                <div class="tech-item" data-tooltip="Inteligencia Artificial">
+                    <i class="fa-solid fa-brain tech-icon"></i>
+                    <span class="tech-name">Google Gemini AI</span>
+                </div>
+                <div class="tech-item" data-tooltip="Caché & Colas de mensajes">
+                    <i class="fa-solid fa-bolt tech-icon"></i>
+                    <span class="tech-name">Redis / BullMQ</span>
+                </div>
+                <div class="tech-item" data-tooltip="Android nativo">
+                    <i class="fa-brands fa-android tech-icon"></i>
+                    <span class="tech-name">Kotlin</span>
+                </div>
+                <div class="tech-item" data-tooltip="Web Scraping & Testing">
+                    <i class="fa-solid fa-spider tech-icon"></i>
+                    <span class="tech-name">Playwright</span>
+                </div>
+                <div class="tech-item" data-tooltip="Estilos modernos y responsivos">
+                    <i class="fa-brands fa-css3-alt tech-icon"></i>
+                    <span class="tech-name">Tailwind CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FAQ (AEO OPTIMIZADO)                         -->
+    <!-- ============================================ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Preguntas Frecuentes</span>
+                <h2 class="section-title" id="faq-title">Todo lo que necesitas saber</h2>
+                <p class="section-subtitle">Respuestas claras a las consultas más comunes sobre nuestros servicios y productos</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Qué es AutoZajuna Pro y cómo ayuda a instructores SENA?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            AutoZajuna Pro es un software de escritorio para Windows que automatiza la calificación de evidencias en la plataforma Zajuna/Territorio del SENA. Utiliza inteligencia artificial de Google Gemini para evaluar entregas estudiantiles en formato PDF, DOCX y PPTX, generar retroalimentación formativa personalizada y asignar calificaciones automáticamente. Cuenta con 6 modos de operación: Deep Scan, Revisión Pendiente, Edición Masiva de Fechas, Extracción de Perfiles, Calificación con IA y Unificador de PDFs. Está disponible desde $80.000 COP/mes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cuánto cuesta desarrollar un CRM empresarial a medida en Colombia?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            El desarrollo de un CRM empresarial a medida en Colombia comienza desde $5.000.000 COP. El precio varía según la complejidad del sistema, número de módulos (dashboards, reportes, gestión de roles), integraciones requeridas (WhatsApp, pagos, APIs externas) y nivel de seguridad. En Nexora Digital utilizamos React, TypeScript y Supabase para crear CRMs con Row Level Security, generación automática de documentos PDF/Excel y arquitectura Zero Trust.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Qué tecnologías utiliza Nexora Digital para desarrollar software?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Nuestro stack tecnológico incluye React 19, Next.js 16, TypeScript, Node.js con Express, Python, Supabase (PostgreSQL), Google Gemini AI, Redis con BullMQ, Tailwind CSS, Kotlin con Jetpack Compose para Android, y Playwright para automatización. Todas nuestras soluciones siguen arquitecturas Zero Trust, implementan Row Level Security y cumplen con las mejores prácticas de seguridad de la industria.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Cómo funciona el proceso de desarrollo de un proyecto?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Nuestro proceso sigue 4 fases claras: <strong>1) Consulta inicial gratuita</strong> donde entendemos tus necesidades y objetivos. <strong>2) Diseño y prototipado</strong> donde definimos la arquitectura, UX y alcance del proyecto. <strong>3) Desarrollo iterativo</strong> con entregas parciales cada semana y feedback constante por WhatsApp. <strong>4) Lanzamiento y soporte</strong> que incluye despliegue en producción, capacitación del equipo y 30 días de soporte sin costo adicional.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Ofrecen soporte y mantenimiento después de la entrega?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Sí, todos los proyectos incluyen 30 días de soporte post-entrega sin costo adicional. Esto cubre corrección de bugs, ajustes menores y asistencia técnica. Después de este período, ofrecemos planes de mantenimiento mensual que incluyen actualizaciones de seguridad, monitoreo de rendimiento, corrección de bugs prioritaria y soporte técnico por WhatsApp o Telegram.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Pueden integrar inteligencia artificial en mi proyecto existente?</span>
+                        <i class="fa-solid fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Sí, tenemos experiencia comprobada integrando inteligencia artificial con Google Gemini AI en proyectos reales y en producción. Podemos implementar chatbots inteligentes, procesamiento automático de documentos (OCR), calificación y evaluación con IA, análisis de datos automatizado y más. Nuestro producto estrella AutoZajuna Pro es un ejemplo exitoso de integración de IA en un entorno educativo real.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CONTACTO                                     -->
+    <!-- ============================================ -->
+    <section class="section section-alt" id="contacto" aria-labelledby="contacto-title">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Hablemos</span>
+                <h2 class="section-title" id="contacto-title">Tu próximo proyecto merece tecnología que transforme</h2>
+                <p class="section-subtitle">Cuéntanos tu idea y te responderemos en menos de 24 horas con una propuesta personalizada</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Formulario -->
+                <form class="contact-form glass-card animate-on-scroll" id="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="nxd_u_val">Nombre completo *</label>
+                            <input class="form-input" type="text" id="nxd_u_val" name="nxd_u_val" placeholder="Tu nombre" required minlength="3" autocomplete="off">
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="nxd_e_val">Correo electrónico *</label>
+                            <input class="form-input" type="email" id="nxd_e_val" name="nxd_e_val" placeholder="tu@correo.com" required autocomplete="off">
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="nxd_p_val">Teléfono / WhatsApp *</label>
+                            <input class="form-input" type="tel" id="nxd_p_val" name="nxd_p_val" placeholder="+57 300 000 0000" required minlength="7" autocomplete="off">
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="nxd_s_val">Tipo de servicio *</label>
+                            <select class="form-select" id="nxd_s_val" name="nxd_s_val" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="ecommerce">E-Commerce / Tienda Online</option>
+                                <option value="crm">CRM / Sistema Empresarial</option>
+                                <option value="automatizacion">Automatización / Bot con IA</option>
+                                <option value="app-movil">Aplicación Móvil Android</option>
+                                <option value="fintech">Fintech / Solución Financiera</option>
+                                <option value="landing">Landing Page / Diseño Web</option>
+                                <option value="invitacion">Invitación Digital Premium</option>
+                                <option value="datos">Análisis de Datos / Power BI</option>
+                                <option value="consultoria">Consultoría en Arquitectura</option>
+                                <option value="autozajuna">AutoZajuna Pro (Licencia)</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="nxd_b_val">Presupuesto estimado</label>
+                        <select class="form-select" id="nxd_b_val" name="nxd_b_val">
+                            <option value="">Selecciona un rango (opcional)</option>
+                            <option value="menos-500k">Menos de $500.000 COP</option>
+                            <option value="500k-2m">$500.000 — $2.000.000 COP</option>
+                            <option value="2m-5m">$2.000.000 — $5.000.000 COP</option>
+                            <option value="5m-10m">$5.000.000 — $10.000.000 COP</option>
+                            <option value="mas-10m">Más de $10.000.000 COP</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="nxd_m_val">Describe tu proyecto *</label>
+                        <textarea class="form-textarea" id="nxd_m_val" name="nxd_m_val" placeholder="Cuéntanos sobre tu proyecto, objetivos y cualquier detalle importante..." required minlength="10" rows="5"></textarea>
+                        <span class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="form-btn" id="form-submit">
+                        <span class="form-btn-text">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud
+                        </span>
+                        <span class="form-btn-loading" style="display:none;">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Enviando...
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Canales de Contacto -->
+                <div class="contact-channels animate-on-scroll">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/573239306599?text=Hola%20Nexora%20Digital%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="channel-card channel-whatsapp">
+                        <div class="channel-icon ci-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="channel-info">
+                            <span class="channel-label">WhatsApp</span>
+                            <span class="channel-value">+57 323 930 6599</span>
+                            <span class="channel-hint">Respuesta en menos de 2 horas</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/Jaison_Rodriguez" target="_blank" rel="noopener noreferrer" class="channel-card channel-telegram">
+                        <div class="channel-icon ci-telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <div class="channel-info">
+                            <span class="channel-label">Telegram</span>
+                            <span class="channel-value">@Jaison_Rodriguez</span>
+                            <span class="channel-hint">Chat directo disponible</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:jaisonrodriguez@gmail.com" class="channel-card channel-email">
+                        <div class="channel-icon ci-email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="channel-info">
+                            <span class="channel-label">Correo Electrónico</span>
+                            <span class="channel-value">jaisonrodriguez@gmail.com</span>
+                            <span class="channel-hint">Para propuestas formales</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+                    </a>
+
+                    <!-- Consulta Gratuita CTA -->
+                    <div class="channel-promo glass-card">
+                        <i class="fa-solid fa-comments"></i>
+                        <h4>Consulta Inicial Gratuita</h4>
+                        <p>Agenda una videollamada de 30 minutos para discutir tu proyecto sin compromiso.</p>
+                        <a href="https://wa.me/573239306599?text=Hola%2C%20quiero%20agendar%20una%20consulta%20gratuita%20para%20mi%20proyecto" target="_blank" rel="noopener noreferrer" class="promo-btn">
+                            Agendar Ahora <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#inicio" class="footer-logo"><img src="Logo Nexora Digital.jpg" alt="Nexora Digital Logo"></a>
+                    <p class="footer-slogan">Lo que viene es ahora.</p>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Servicios</h4>
+                        <a href="#srv-ecommerce" class="footer-link">E-Commerce</a>
+                        <a href="#srv-crm" class="footer-link">CRM Empresarial</a>
+                        <a href="#srv-automatizacion" class="footer-link">Automatización &amp; IA</a>
+                        <a href="#srv-mobile" class="footer-link">Apps Móviles</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Recursos</h4>
+                        <a href="#proyectos" class="footer-link">Portafolio</a>
+                        <a href="#software" class="footer-link">AutoZajuna Pro</a>
+                        <a href="#precios" class="footer-link">Precios</a>
+                        <a href="#faq" class="footer-link">FAQ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Contacto</h4>
+                        <a href="https://wa.me/573239306599" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/Jaison_Rodriguez" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                        <a href="mailto:jaisonrodriguez@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i> Email</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Nexora Digital. Todos los derechos reservados.</p>
+                    <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem;">
+                        <a href="legales.html#terminos" class="footer-link" style="font-size: 0.85rem;">Términos y Condiciones</a>
+                        <a href="legales.html#privacidad" class="footer-link" style="font-size: 0.85rem;">Política de Privacidad</a>
+                        <a href="legales.html#exencion" class="footer-link" style="font-size: 0.85rem;">Disclaimer Tecnológico</a>
+                    </div>
+                    <p class="footer-etymology" title="Nex del latín 'lo nuevo' + Ora 'ahora' — fusionamos la sabiduría antigua con tecnología de vanguardia">
+                    <i class="fa-solid fa-feather"></i>
+                    <em>Nex</em> del latín <em>"lo nuevo"</em> + <em>Ora</em> <em>"ahora"</em> — fusionamos la sabiduría antigua con tecnología de vanguardia.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- WHATSAPP FLOTANTE                            -->
+    <!-- ============================================ -->
+    <a href="https://wa.me/573239306599?text=Hola%20Nexora%20Digital%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="whatsapp-float" 
+       aria-label="Contactar por WhatsApp"
+       title="¿Necesitas ayuda? Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ============================================ -->
+    <!-- TOAST CONTAINER                              -->
+    <!-- ============================================ -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <!-- ============================================ -->
+    <!-- LEAD MAGNET MODAL (Exit Intent)              -->
+    <!-- ============================================ -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="closeModal" aria-label="Cerrar">&times;</button>
+            <div class="modal-body text-center">
+                <i class="fa-solid fa-gift" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">¡Espera! Obtén una Auditoría Gratuita</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Antes de irte, solicita una asesoría de 30 minutos sin costo para descubrir cómo escalar tu negocio con IA y Software.</p>
+                <a href="https://wa.me/573239306599?text=Quiero%20mi%20auditor%C3%ADa%20gratuita" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; display: block; padding: 1rem; border-radius: 8px;">Reclamar Auditoría Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- STICKY CTA (Mobile only)                     -->
+    <!-- ============================================ -->
+    <div class="sticky-cta-mobile">
+        <a href="#contacto" class="btn-sticky">Solicitar Presupuesto</a>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="script.js"></script>
+    <script>
+        // Exit Intent Modal Logic
+        let modalShown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY < 0 && !modalShown) {
+                document.getElementById('leadModal').classList.add('active');
+                modalShown = true;
+            }
+        });
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('leadModal').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

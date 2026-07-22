@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Nexora Digital | Desarrollo de Software, IA y Automatización en Colombia</title>
+    <meta name="description" content="Artículos y casos de éxito sobre desarrollo de software, e-commerce, automatización con IA y CRM para empresas colombianas. Escrito por expertos de Nexora Digital.">
+    <link rel="canonical" href="https://nexora-digital-portal.vercel.app/blog.html">
+    <link rel="icon" type="image/png" href="icono Nexora Digital.png">
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <style>
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .blog-card { border-radius: 1.25rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-card:hover { transform: translateY(-6px); }
+        .blog-card-header { padding: 2rem 2rem 1rem; background: linear-gradient(135deg, var(--bg-card), rgba(var(--primary-rgb, 249,115,22),0.08)); border-radius: 1.25rem 1.25rem 0 0; }
+        .blog-card-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-light); background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem; display: inline-block; margin-bottom: 1rem; }
+        .blog-card-title { font-size: 1.2rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.75rem; }
+        .blog-card-excerpt { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+        .blog-card-footer { padding: 1rem 2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .blog-card-meta { font-size: 0.8rem; color: var(--text-muted); }
+        .blog-read-link { font-size: 0.85rem; font-weight: 600; color: var(--primary-light); display: flex; align-items: center; gap: 0.4rem; text-decoration: none; transition: gap 0.2s ease; }
+        .blog-read-link:hover { gap: 0.7rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-nexora-opt.jpg" alt="Nexora Digital Logo" width="119" height="105" fetchpriority="high">
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#servicios" class="nav-link">Servicios</a>
+                <a href="index.html#proyectos" class="nav-link">Proyectos</a>
+                <a href="blog.html" class="nav-link" style="color: var(--primary-light);">Blog</a>
+                <a href="index.html#contacto" class="nav-cta">Cotizar Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 80px;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Blog &amp; Casos de Éxito</span>
+                    <h1 class="section-title">Ideas, tutoriales y proyectos reales</h1>
+                    <p class="section-subtitle">Compartimos lo que aprendemos construyendo software para empresas colombianas</p>
+                </div>
+
+                <div class="blog-grid">
+
+                    <!-- Artículo 1 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">Caso de Éxito</span>
+                            <h2 class="blog-card-title">Cómo automatizamos la agenda de un spa con AgendaClick</h2>
+                            <p class="blog-card-excerpt">Un spa en Colombia perdía el 30% de sus citas por cancelaciones sin aviso. Así fue como construimos una plataforma SaaS multi-tenant con confirmación OTP, Google Maps y dashboard financiero que redujo las ausencias en un 70%.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Julio 2025</span>
+                            <a href="blog-agendaclick-spa.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 2 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">Guía Práctica</span>
+                            <h2 class="blog-card-title">¿Cuánto cuesta desarrollar una tienda online en Colombia en 2025?</h2>
+                            <p class="blog-card-excerpt">Desglosamos los rangos de precio reales para e-commerce en Colombia: desde una tienda básica con Shopify hasta un sistema personalizado con editor de productos, pasarela Wompi y CRM integrado.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Junio 2025</span>
+                            <a href="blog-costo-ecommerce-colombia.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 3 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">Caso de Éxito</span>
+                            <h2 class="blog-card-title">E-Commerce con Supabase: caso real de ArtDesign Tienda</h2>
+                            <p class="blog-card-excerpt">Construimos un e-commerce de ropa personalizable con React 19, Supabase (RLS + Storage), editor canvas con Fabric.js y pagos Wompi. Te contamos las decisiones técnicas y las lecciones aprendidas.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Mayo 2025</span>
+                            <a href="blog-artdesign-supabase.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 4 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">Tecnología</span>
+                            <h2 class="blog-card-title">Impresión 3D + E-Commerce: cómo construimos una tienda con GSAP y Framer Motion</h2>
+                            <p class="blog-card-excerpt">Una tienda de impresiones 3D necesitaba animaciones que transmitieran la calidad del producto antes de comprarlo. Así integramos GSAP, Framer Motion y Supabase en Next.js 16 con Tailwind v4.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Julio 2025</span>
+                            <a href="blog-3dprint-gsap.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 5 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">Seguridad</span>
+                            <h2 class="blog-card-title">Supabase Row Level Security (RLS): guía para aplicaciones SaaS en Colombia</h2>
+                            <p class="blog-card-excerpt">En un modelo multi-tenant, un error de RLS puede exponer los datos de todos tus clientes. Explicamos cómo implementar políticas RLS restrictivas para proteger tu aplicación SaaS desde la base de datos.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Abril 2025</span>
+                            <a href="blog-supabase-rls-saas.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 6 -->
+                    <article class="blog-card glass-card animate-on-scroll">
+                        <div class="blog-card-header">
+                            <span class="blog-card-tag">SEO</span>
+                            <h2 class="blog-card-title">Cómo posicionar tu negocio en Google Maps sin pagar publicidad</h2>
+                            <p class="blog-card-excerpt">Guía paso a paso para optimizar tu Google Business Profile, conseguir reseñas, publicar novedades y aparecer primero en búsquedas locales de Colombia sin invertir un peso en Google Ads.</p>
+                        </div>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-meta"><i class="fa-regular fa-calendar"></i> Julio 2025</span>
+                            <a href="blog-google-maps-gratis-colombia.html" class="blog-read-link">Leer artículo <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-alt" style="text-align:center;">
+            <div class="container" style="max-width:650px;">
+                <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+                <p style="color:var(--text-secondary); margin: 1rem 0 2rem;">Convierte tu idea en software real. Presupuesto sin costo en menos de 24 horas.</p>
+                <a href="index.html#contacto" class="btn-primary" style="font-size:1.1rem;">Hablar con un experto</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo"><img src="logo-nexora-opt.jpg" alt="Nexora Digital" width="119" height="105" loading="lazy"></a>
+                <p class="footer-slogan">Lo que viene es ahora.</p>
+            </div>
+            <nav class="footer-links">
+                <a href="index.html" class="footer-link">Inicio</a>
+                <a href="legales.html" class="footer-link">Términos</a>
+            </nav>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

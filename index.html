@@ -23,7 +23,7 @@
     
     <!-- ===== FAVICONS ===== -->
     <link rel="icon" type="image/png" href="icono Nexora Digital.png">
-    <link rel="apple-touch-icon" href="icono Nexora Digital Grande.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- ===== GEO / AEO — Structured Data ===== -->
     <!-- Datos para motores generativos (ChatGPT, Gemini, Perplexity) -->
@@ -249,7 +249,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
     <!-- ===== ESTILOS ===== -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 </head>
 <body>
     <!-- ===== PARTÍCULAS INTERACTIVAS (WOW Factor) ===== -->
@@ -261,16 +262,17 @@
     <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
         <div class="nav-container container">
             <a href="#inicio" class="nav-logo" aria-label="Nexora Digital - Inicio">
-                <img src="Logo Nexora Digital.jpg" alt="Nexora Digital Logo">
+                <img src="logo-nexora-opt.jpg" alt="Nexora Digital Logo" width="119" height="105" fetchpriority="high">
             </a>
 
             <div class="nav-links" id="nav-links" role="menubar">
                 <a href="#servicios" class="nav-link" role="menuitem">Servicios</a>
                 <a href="#proyectos" class="nav-link" role="menuitem">Proyectos</a>
                 <a href="#software" class="nav-link" role="menuitem">Software</a>
-                <a href="#precios" class="nav-link" role="menuitem">Precios</a>
+                <a href="#tecnologias" class="nav-link" role="menuitem">Stack</a>
                 <a href="#faq" class="nav-link" role="menuitem">FAQ</a>
-                <a href="#contacto" class="nav-cta" role="menuitem">
+                <a href="blog.html" class="nav-link" role="menuitem">Blog</a>
+                <a href="#contacto" class="nav-cta" role="menuitem" id="nav-cta-btn">
                     <i class="fa-solid fa-paper-plane"></i> Solicitar Cotización
                 </a>
             </div>
@@ -1240,7 +1242,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#inicio" class="footer-logo"><img src="Logo Nexora Digital.jpg" alt="Nexora Digital Logo"></a>
+                    <a href="#inicio" class="footer-logo"><img src="logo-nexora-opt.jpg" alt="Nexora Digital Logo" width="119" height="105" loading="lazy"></a>
                     <p class="footer-slogan">Lo que viene es ahora.</p>
                 </div>
 

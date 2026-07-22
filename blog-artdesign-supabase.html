@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce con Supabase: caso real de ArtDesign Tienda | Nexora</title>
-    <meta name="description" content="Descubre cómo construimos ArtDesign Tienda con React 19 y Supabase. Integración de canvas Fabric.js para ropa personalizada y pagos Wompi.">
-    <meta name="keywords" content="desarrollo ecommerce react, supabase ecommerce, fabric.js tienda, desarrollo web avanzado">
+    <title>Ingeniería de Rendimiento: Caso ArtDesign Tienda | Nexora Digital</title>
+    <meta name="description" content="Informe Ejecutivo de optimización para ArtDesign Tienda. Arquitectura de alto rendimiento, seguridad de grado empresarial y SEO técnico avanzado.">
+    <meta name="keywords" content="rendimiento web, optimizacion seo, seguridad ecommerce, supabase, react 19, nexora digital">
     <link rel="canonical" href="https://nexora-digital-portal.vercel.app/blog-artdesign-supabase.html">
     <link rel="icon" type="image/png" href="icono Nexora Digital.png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .report-section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .report-section h2 {
+            color: white;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .metric-card {
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+        }
+        .metric-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .metric-value { font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+        .metric-desc { font-size: 0.9rem; color: var(--primary-light); }
+        .report-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .report-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar scrolled" id="navbar">
@@ -25,33 +72,117 @@
     </nav>
 
     <main style="padding-top: 120px; padding-bottom: 80px;">
-        <article class="container" style="max-width: 800px;">
-            <span class="section-tag">Caso de Éxito Técnico</span>
-            <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">E-Commerce con Supabase: caso real de ArtDesign Tienda</h1>
+        <article class="container" style="max-width: 900px;">
+            <span class="section-tag" style="background: rgba(59, 130, 246, 0.1); color: #60a5fa; border-color: rgba(59, 130, 246, 0.2);">Informe Ejecutivo</span>
+            <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">Valor Agregado y Optimización de Alto Nivel: Caso ArtDesign Store</h1>
             
-            <div class="glass-card" style="padding: 2.5rem; line-height: 1.8; color: var(--text-secondary); margin-top: 2rem;">
-                <p>Las plataformas como Shopify o WordPress se quedan cortas cuando el modelo de negocio requiere funcionalidades altamente interactivas antes de que el usuario agregue el producto al carrito. Así fue el reto con <strong>ArtDesign Tienda</strong>.</p>
+            <div style="display:flex; gap: 1.5rem; color: var(--text-muted); margin-bottom: 3rem; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;">
+                <span><strong>Proyecto:</strong> ArtDesign Store (artdesigntienda.vercel.app)</span>
+                <span><strong>Fecha:</strong> Julio 2026</span>
+            </div>
 
-                <h2 style="color: white; margin-top:2rem;">El Reto del Editor en Tiempo Real</h2>
-                <p>El cliente vende prendas de vestir que el usuario final debe poder personalizar subiendo sus propios logos, añadiendo texto y modificando colores. Para esto, integramos <strong>Fabric.js</strong>, una potente librería de manipulación de canvas HTML5 que permitió a los usuarios diseñar sobre los mockups 3D de las camisetas.</p>
+            <div class="glass-card" style="padding: 2.5rem; line-height: 1.8; color: var(--text-secondary);">
+                
+                <div style="background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 3rem;">
+                    <h3 style="color: white; margin-top: 0; font-size: 1.2rem;"><i class="fa-solid fa-bullseye" style="color: var(--primary); margin-right: 0.5rem;"></i> Propuesta de Valor Comercial</h3>
+                    <p style="margin-bottom: 0;">Este documento resume la ingeniería de rendimiento, seguridad y SEO aplicada al sitio web. Esta misma arquitectura es la que <strong>garantiza a tus futuros clientes páginas web ultrarrápidas, seguras en compras online y mejor posicionadas en Google</strong> que su competencia.</p>
+                </div>
 
-                <h2 style="color: white; margin-top:2rem;">La arquitectura: React 19 + Supabase</h2>
-                <p>Decidimos usar el ecosistema de <strong>Supabase</strong> como Backend-as-a-Service (BaaS) por tres motivos fundamentales:</p>
-                <ul>
-                    <li><strong>PostgreSQL Nativo:</strong> Nos permitió estructurar catálogos complejos con relaciones JSONB para variaciones de tallas y colores.</li>
-                    <li><strong>Storage:</strong> Los diseños generados en el canvas se exportan en alta resolución y se guardan directamente en los buckets de Supabase Storage mediante políticas seguras.</li>
-                    <li><strong>Row Level Security (RLS):</strong> Aseguramos que un usuario solo pueda ver sus propios diseños y pedidos, mientras que el rol `ADMIN` tiene acceso a todo el tablero de control.</li>
-                </ul>
+                <!-- SECCIÓN 1 -->
+                <section class="report-section">
+                    <h2><i class="fa-solid fa-chart-line"></i> 1. Resumen de Impacto y Rendimiento</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-title">Carga Inicial JS (Bundle)</div>
+                            <div class="metric-value">De 502 KB a 27.4 KB</div>
+                            <div class="metric-desc">⚡ La página carga en un parpadeo en celulares 4G/3G.</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Peso de Imágenes Clave</div>
+                            <div class="metric-value">De 239 KB a 21.4 KB (-91%)</div>
+                            <div class="metric-desc">📱 Ahorra datos móviles y acelera el renderizado.</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Bloqueo Hilo Principal</div>
+                            <div class="metric-value">De >1.5s a <100ms</div>
+                            <div class="metric-desc">👆 Interacción fluida inmediata sin congelamientos.</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">Seguridad de Servidor</div>
+                            <div class="metric-value">7/7 Encabezados Empresariales</div>
+                            <div class="metric-desc">🛡️ Protección total contra hackeos y suplantación.</div>
+                        </div>
+                    </div>
+                </section>
 
-                <h2 style="color: white; margin-top:2rem;">Pagos con Wompi</h2>
-                <p>Para procesar los pagos en Colombia, implementamos el Widget de <strong>Wompi</strong> (Bancolombia) que maneja Nequi, PSE y Tarjetas de Crédito de forma segura y sin salir del portal.</p>
+                <!-- SECCIÓN 2 -->
+                <section class="report-section">
+                    <h2><i class="fa-solid fa-bolt"></i> 2. Ingeniería de Rendimiento (Mobile-First)</h2>
+                    <p>Una web lenta pierde hasta el 53% de sus visitantes. Hemos aplicado técnicas utilizadas por grandes empresas como Amazon o Shopify:</p>
+                    <ul class="report-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Carga Inteligente por Demanda (Code-Splitting):</strong> Componentes pesados (diseñador de prendas, facturas PDF) solo se descargan cuando el cliente interactúa con esa función.</li>
+                        <li><strong>Aislamiento de Scripts Bloqueantes:</strong> Google reCAPTCHA (373 KB) fue aislado para cargarse exclusivamente en el registro, liberando el 100% del rendimiento en el catálogo público.</li>
+                        <li><strong>Preconexiones Ultra-Rápidas:</strong> Implementación de <code>preconnect</code> y <code>dns-prefetch</code> para Supabase y Google Fonts, reduciendo en >500 ms la espera al traer productos.</li>
+                        <li><strong>Carga Perezosa (Lazy Loading):</strong> Imágenes fuera de pantalla cargan de forma asíncrona conforme el usuario hace scroll.</li>
+                    </ul>
+                </section>
 
-                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                    <h3 style="color: white;">¿Tienes un modelo de e-commerce complejo?</h3>
-                    <a href="index.html#contacto" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Hablemos de ingeniería</a>
+                <!-- SECCIÓN 3 -->
+                <section class="report-section">
+                    <h2><i class="fa-solid fa-shield-halved"></i> 3. Seguridad de Grado Empresarial</h2>
+                    <p>Un sitio web profesional debe transmitir 100% de confianza al usuario para que ingrese sus datos y realice pagos online.</p>
+                    <ul class="report-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Content-Security-Policy (CSP):</strong> Nivel bancario que restringe scripts y anula ataques de inyección de código maligno (XSS).</li>
+                        <li><strong>Aislamiento de Origen (COOP & CORP):</strong> Bloquea ataques cruzados y lectura no autorizada de recursos externos.</li>
+                        <li><strong>Strict-Transport-Security (HSTS):</strong> Fuerza conexión HTTPS cifrada permanentemente.</li>
+                        <li><strong>X-Content-Type-Options (nosniff):</strong> Impide reinterpretación maliciosa de archivos subidos.</li>
+                        <li><strong>Ocultamiento de Firma:</strong> Mitigación de encabezados de rastreo para reducir superficie de ataque.</li>
+                    </ul>
+                </section>
+
+                <!-- SECCIÓN 4 -->
+                <section class="report-section">
+                    <h2><i class="fa-brands fa-google"></i> 4. SEO Técnico y Marcado Estructurado</h2>
+                    <p>No basta con tener una página bonita; Google debe entender exactamente qué vende el negocio.</p>
+                    <ul class="report-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Schema.org (JSON-LD):</strong> Marcado nativo <code>ClothingStore</code>. Permite a Google mostrar Resultados Enriquecidos (Rich Snippets) con estrellas, horarios y precios.</li>
+                        <li><strong>Arquitectura Semántica (H1/H2):</strong> Jerarquía impecable para que los robots indexen correctamente las palabras clave de moda.</li>
+                        <li><strong>Meta Descripciones:</strong> Ajustadas a 146 caracteres para evitar recortes en móviles.</li>
+                        <li><strong>Sitemap XML Dinámico:</strong> Generación automática que notifica a Google cada nuevo producto (287 URLs actuales).</li>
+                    </ul>
+                </section>
+
+                <!-- SECCIÓN 5 -->
+                <section class="report-section" style="background: rgba(249, 115, 22, 0.05); border-color: rgba(249, 115, 22, 0.2);">
+                    <h2><i class="fa-solid fa-briefcase"></i> 5. ¿Cómo Usar Este Informe para Vender?</h2>
+                    <p>Cuando presentes una propuesta web a un cliente, destaca estos 4 Pilares Diferenciadores:</p>
+                    <ol style="margin-top: 1rem; margin-bottom: 0; padding-left: 1.2rem; color: white;">
+                        <li style="margin-bottom: 0.8rem;"><strong>"No te vendo solo diseño, te vendo una máquina de ventas rápida":</strong> La velocidad de carga aumenta directamente las ventas en móviles.</li>
+                        <li style="margin-bottom: 0.8rem;"><strong>"Tu página estará protegida con Seguridad Bancaria":</strong> CSP y HSTS para que compren sin miedo.</li>
+                        <li style="margin-bottom: 0.8rem;"><strong>"Optimización SEO incluida desde el día 1":</strong> Schema.org para destacar en Google sobre su competencia local.</li>
+                        <li style="margin-bottom: 0.8rem;"><strong>"Infraestructura Cloud de última generación":</strong> CDN Edge global que garantiza 100% de disponibilidad.</li>
+                    </ol>
+                </section>
+
+                <div style="margin-top: 3rem; text-align: center;">
+                    <a href="index.html#contacto" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Construye tu E-Commerce Premium con Nosotros</a>
                 </div>
             </div>
         </article>
     </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo"><img src="logo-nexora-opt.jpg" alt="Nexora Digital" width="119" height="105" loading="lazy"></a>
+                <p class="footer-slogan">Lo que viene es ahora.</p>
+            </div>
+            <nav class="footer-links">
+                <a href="index.html" class="footer-link">Inicio</a>
+                <a href="blog.html" class="footer-link">Blog</a>
+                <a href="legales.html" class="footer-link">Términos</a>
+            </nav>
+        </div>
+    </footer>
 </body>
 </html>

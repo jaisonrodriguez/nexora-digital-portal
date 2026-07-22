@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Row Level Security (RLS) para SaaS en Colombia | Nexora</title>
+    <meta name="description" content="Guía sobre cómo asegurar arquitecturas Multi-Tenant en Supabase usando Row Level Security (RLS) para aplicaciones SaaS empresariales.">
+    <link rel="canonical" href="https://nexora-digital-portal.vercel.app/blog-supabase-rls-saas.html">
+    <link rel="icon" type="image/png" href="icono Nexora Digital.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-nexora-opt.jpg" alt="Nexora Digital" width="119" height="105" fetchpriority="high">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#servicios" class="nav-link">Servicios</a>
+                <a href="blog.html" class="nav-link" style="color: var(--primary-light);">Blog</a>
+                <a href="index.html#contacto" class="nav-cta">Cotizar Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <article class="container" style="max-width: 800px;">
+            <span class="section-tag">Seguridad y Arquitectura</span>
+            <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">Supabase Row Level Security (RLS): guía para aplicaciones SaaS</h1>
+            
+            <div class="glass-card" style="padding: 2.5rem; line-height: 1.8; color: var(--text-secondary); margin-top: 2rem;">
+                <p>En el desarrollo de software moderno, una de las mayores preocupaciones es evitar el <em>Data Leakage</em> (Fuga de datos). Imagina que tienes una aplicación SaaS en Colombia usada por tres empresas de logística diferentes; si un usuario de la Empresa A logra interceptar los envíos de la Empresa B, tu negocio está muerto. Aquí es donde entra <strong>Supabase RLS</strong>.</p>
+
+                <h2 style="color: white; margin-top:2rem;">¿Qué es RLS en PostgreSQL?</h2>
+                <p>Row Level Security te permite definir políticas de acceso <strong>directamente en la base de datos</strong>, en lugar de hacerlo en la capa de aplicación (Backend). Esto significa que no importa si tu API Node.js o tu cliente React hace una consulta mal estructurada; la base de datos filtrará las filas de manera implícita.</p>
+
+                <h2 style="color: white; margin-top:2rem;">El Patrón Multi-Tenant</h2>
+                <p>En Nexora Digital aplicamos el siguiente patrón en la base de datos:</p>
+                <ol>
+                    <li>Todas las tablas clave (ej. <code>orders</code>, <code>clients</code>) deben tener una columna <code>tenant_id</code>.</li>
+                    <li>El JWT (JSON Web Token) del usuario autenticado debe inyectar de manera segura a qué <code>tenant_id</code> pertenece.</li>
+                    <li>La política RLS de Supabase comprueba que <code>auth.jwt() ->> 'tenant_id' = tenant_id</code>.</li>
+                </ol>
+
+                <h2 style="color: white; margin-top:2rem;">Protección desde la raíz</h2>
+                <p>Con RLS activado de manera restrictiva por defecto (`ALTER TABLE tabla ENABLE ROW LEVEL SECURITY;`), aseguramos que los datos estén completamente asilados. Esto no solo nos ayuda a pasar auditorías de seguridad, sino que previene el estrés de inyecciones de datos entre usuarios.</p>
+
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                    <h3 style="color: white;">¿Necesitas escalar tu plataforma SaaS con seguridad?</h3>
+                    <a href="index.html#contacto" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Contrata a nuestro equipo Senior</a>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

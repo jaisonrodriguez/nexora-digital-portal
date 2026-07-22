@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce con Supabase: caso real de ArtDesign Tienda | Nexora</title>
+    <meta name="description" content="Descubre cómo construimos ArtDesign Tienda con React 19 y Supabase. Integración de canvas Fabric.js para ropa personalizada y pagos Wompi.">
+    <meta name="keywords" content="desarrollo ecommerce react, supabase ecommerce, fabric.js tienda, desarrollo web avanzado">
+    <link rel="canonical" href="https://nexora-digital-portal.vercel.app/blog-artdesign-supabase.html">
+    <link rel="icon" type="image/png" href="icono Nexora Digital.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-nexora-opt.jpg" alt="Nexora Digital" width="119" height="105" fetchpriority="high">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#servicios" class="nav-link">Servicios</a>
+                <a href="blog.html" class="nav-link" style="color: var(--primary-light);">Blog</a>
+                <a href="index.html#contacto" class="nav-cta">Cotizar Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <article class="container" style="max-width: 800px;">
+            <span class="section-tag">Caso de Éxito Técnico</span>
+            <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">E-Commerce con Supabase: caso real de ArtDesign Tienda</h1>
+            
+            <div class="glass-card" style="padding: 2.5rem; line-height: 1.8; color: var(--text-secondary); margin-top: 2rem;">
+                <p>Las plataformas como Shopify o WordPress se quedan cortas cuando el modelo de negocio requiere funcionalidades altamente interactivas antes de que el usuario agregue el producto al carrito. Así fue el reto con <strong>ArtDesign Tienda</strong>.</p>
+
+                <h2 style="color: white; margin-top:2rem;">El Reto del Editor en Tiempo Real</h2>
+                <p>El cliente vende prendas de vestir que el usuario final debe poder personalizar subiendo sus propios logos, añadiendo texto y modificando colores. Para esto, integramos <strong>Fabric.js</strong>, una potente librería de manipulación de canvas HTML5 que permitió a los usuarios diseñar sobre los mockups 3D de las camisetas.</p>
+
+                <h2 style="color: white; margin-top:2rem;">La arquitectura: React 19 + Supabase</h2>
+                <p>Decidimos usar el ecosistema de <strong>Supabase</strong> como Backend-as-a-Service (BaaS) por tres motivos fundamentales:</p>
+                <ul>
+                    <li><strong>PostgreSQL Nativo:</strong> Nos permitió estructurar catálogos complejos con relaciones JSONB para variaciones de tallas y colores.</li>
+                    <li><strong>Storage:</strong> Los diseños generados en el canvas se exportan en alta resolución y se guardan directamente en los buckets de Supabase Storage mediante políticas seguras.</li>
+                    <li><strong>Row Level Security (RLS):</strong> Aseguramos que un usuario solo pueda ver sus propios diseños y pedidos, mientras que el rol `ADMIN` tiene acceso a todo el tablero de control.</li>
+                </ul>
+
+                <h2 style="color: white; margin-top:2rem;">Pagos con Wompi</h2>
+                <p>Para procesar los pagos en Colombia, implementamos el Widget de <strong>Wompi</strong> (Bancolombia) que maneja Nequi, PSE y Tarjetas de Crédito de forma segura y sin salir del portal.</p>
+
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                    <h3 style="color: white;">¿Tienes un modelo de e-commerce complejo?</h3>
+                    <a href="index.html#contacto" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Hablemos de ingeniería</a>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

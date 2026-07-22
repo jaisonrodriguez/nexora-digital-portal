@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresión 3D + E-Commerce: cómo construimos una tienda con GSAP | Nexora</title>
+    <meta name="description" content="Caso de estudio: Integración de animaciones avanzadas con GSAP y Framer Motion en una tienda de impresión 3D construida con Next.js y Tailwind CSS v4.">
+    <link rel="canonical" href="https://nexora-digital-portal.vercel.app/blog-3dprint-gsap.html">
+    <link rel="icon" type="image/png" href="icono Nexora Digital.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-nexora-opt.jpg" alt="Nexora Digital" width="119" height="105" fetchpriority="high">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#servicios" class="nav-link">Servicios</a>
+                <a href="blog.html" class="nav-link" style="color: var(--primary-light);">Blog</a>
+                <a href="index.html#contacto" class="nav-cta">Cotizar Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <article class="container" style="max-width: 800px;">
+            <span class="section-tag">Tecnología</span>
+            <h1 style="font-size: 2.5rem; margin: 1rem 0; line-height: 1.2;">Impresión 3D + E-Commerce: cómo construimos una tienda animada con GSAP</h1>
+            
+            <div class="glass-card" style="padding: 2.5rem; line-height: 1.8; color: var(--text-secondary); margin-top: 2rem;">
+                <p>El cliente, una prometedora empresa de impresión 3D en Colombia, tenía un requerimiento muy específico: "Nuestra página no puede verse como un e-commerce genérico; tiene que transmitir la tecnología y el volumen 3D antes de que el cliente compre".</p>
+
+                <h2 style="color: white; margin-top:2rem;">El Stack Elegido</h2>
+                <p>Para lograr fluidez sin sacrificar SEO, armamos el siguiente stack tecnológico:</p>
+                <ul>
+                    <li><strong>Next.js (App Router):</strong> Para Server-Side Rendering y optimización de imágenes nativa.</li>
+                    <li><strong>Tailwind CSS v4:</strong> La nueva versión nos permitió estilizar rápidamente aprovechando el nuevo motor Oxide.</li>
+                    <li><strong>GSAP & Framer Motion:</strong> El combo definitivo para animar el DOM.</li>
+                </ul>
+
+                <h2 style="color: white; margin-top:2rem;">La Magia de GSAP ScrollTrigger</h2>
+                <p>Implementamos animaciones ligadas al scroll (Scroll-linked animations). A medida que el usuario bajaba por la página, las imágenes de las piezas impresas en 3D flotaban y rotaban sutilmente en el eje Z usando la propiedad `transform: perspective`, dando la sensación real de profundidad de campo.</p>
+
+                <h2 style="color: white; margin-top:2rem;">Rendimiento sin sacrificar diseño</h2>
+                <p>El mayor riesgo de usar JavaScript intensivo para animar el DOM es destrozar las métricas de Core Web Vitals (INP y LCP). Minimizamos este impacto diferiendo la carga de la librería GSAP hasta que el contenido crítico del LCP (el hero visual) se renderizara.</p>
+
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                    <h3 style="color: white;">Eleva la calidad visual de tu marca</h3>
+                    <a href="index.html#contacto" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Cotiza tu tienda Premium</a>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

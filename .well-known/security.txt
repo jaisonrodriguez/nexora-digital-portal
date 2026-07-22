@@ -1,0 +1,6 @@
+Contact: mailto:jaisonrodriguez@gmail.com
+Contact: https://wa.me/573239306599
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: es, en
+Canonical: https://nexora-digital-portal.vercel.app/.well-known/security.txt
+Policy: https://nexora-digital-portal.vercel.app/legales.html#privacidad

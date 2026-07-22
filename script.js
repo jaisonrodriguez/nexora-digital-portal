@@ -451,44 +451,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. tsParticles (Neural Network / Constellation effect)
-    if (typeof tsParticles !== 'undefined') {
-        tsParticles.load("tsparticles", {
-            fpsLimit: 60,
-            interactivity: {
-                events: {
-                    onHover: { enable: true, mode: "grab" },
-                    resize: true
+    function loadParticlesSafe() {
+        if (typeof tsParticles !== 'undefined') {
+            tsParticles.load("tsparticles", {
+                fpsLimit: 60,
+                interactivity: {
+                    events: {
+                        onHover: { enable: true, mode: "grab" },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 140, links: { opacity: 1 } }
+                    }
                 },
-                modes: {
-                    grab: { distance: 140, links: { opacity: 1 } }
-                }
-            },
-            particles: {
-                color: { value: "#f97316" }, // Naranja primario
-                links: {
-                    color: "#f97316",
-                    distance: 150,
-                    enable: true,
-                    opacity: 0.3,
-                    width: 1
+                particles: {
+                    color: { value: "#f97316" }, // Naranja primario
+                    links: {
+                        color: "#f97316",
+                        distance: 150,
+                        enable: true,
+                        opacity: 0.3,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1.5,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        outModes: { default: "bounce" }
+                    },
+                    number: {
+                        density: { enable: true, area: 800 },
+                        value: 50
+                    },
+                    opacity: { value: 0.5 },
+                    shape: { type: "circle" },
+                    size: { value: { min: 1, max: 3 } }
                 },
-                move: {
-                    enable: true,
-                    speed: 1.5,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    outModes: { default: "bounce" }
-                },
-                number: {
-                    density: { enable: true, area: 800 },
-                    value: 60
-                },
-                opacity: { value: 0.5 },
-                shape: { type: "circle" },
-                size: { value: { min: 1, max: 3 } }
-            },
-            detectRetina: true
-        });
+                detectRetina: true
+            });
+        } else {
+            setTimeout(loadParticlesSafe, 150);
+        }
     }
+    loadParticlesSafe();
 });

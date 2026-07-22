@@ -7,17 +7,19 @@
     
     <!-- ===== FRONTEND SECURITY (Anti-Hijacking / Anti-Infostealer) ===== -->
     <!-- CSP restringe orígenes de scripts para evitar XSS y fuga de datos -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none';">
-    <!-- Anti-Clickjacking -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none';">
+    <!-- Anti-Clickjacking & Security Headers -->
     <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- ===== SEO PRIMARIO ===== -->
-    <title>Nexora Digital | Desarrollo de Software, CRM, E-Commerce &amp; Automatización con IA en Colombia</title>
+    <title>Nexora Digital | Desarrollo de Software e IA en Colombia</title>
     <meta name="description" content="Nexora Digital es una empresa colombiana de desarrollo de software. Creamos CRM empresariales, tiendas e-commerce, automatización con inteligencia artificial, bots RPA, apps móviles y soluciones fintech. Más de 10 proyectos entregados con tecnología de vanguardia.">
     <meta name="keywords" content="desarrollo software Colombia, CRM empresarial Colombia, e-commerce personalizado, automatización IA, bot RPA SENA, app móvil Android, fintech Colombia, Supabase, React, Next.js, desarrollo web Pasto, software a medida">
     <meta name="author" content="Nexora Digital">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <link rel="canonical" href="https://nexoradigital.com/">
+    <link rel="canonical" href="https://nexora-digital-portal.vercel.app/">
     
     <!-- ===== FAVICONS ===== -->
     <link rel="icon" type="image/png" href="icono Nexora Digital.png">
@@ -32,9 +34,9 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CO">
     <meta property="og:site_name" content="Nexora Digital">
-    <meta property="og:title" content="Nexora Digital — Desarrollo de Software &amp; Automatización con IA en Colombia">
+    <meta property="og:title" content="Nexora Digital | Desarrollo de Software e IA en Colombia">
     <meta property="og:description" content="Creamos CRM empresariales, tiendas e-commerce, bots con IA y apps móviles. +10 proyectos entregados con tecnología de vanguardia. Lo que viene es ahora.">
-    <meta property="og:url" content="https://nexoradigital.com/">
+    <meta property="og:url" content="https://nexora-digital-portal.vercel.app/">
 
     <!-- ===== TWITTER CARDS ===== -->
     <meta name="twitter:card" content="summary_large_image">
@@ -236,19 +238,18 @@
     <!-- ===== FUENTES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"></noscript>
 
     <!-- ===== ICONOS ===== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <!-- ===== EMAILJS SDK ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
     <!-- ===== ESTILOS ===== -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- ===== TSPARTICLES ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
 </head>
 <body>
     <!-- ===== PARTÍCULAS INTERACTIVAS (WOW Factor) ===== -->
@@ -1260,8 +1261,8 @@
                     </div>
                     <div class="footer-col">
                         <h4 class="footer-col-title">Contacto</h4>
-                        <a href="https://wa.me/573239306599" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        <a href="https://t.me/Jaison_Rodriguez" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                        <a href="https://wa.me/573239306599" target="_blank" rel="nofollow noopener noreferrer" class="footer-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/Jaison_Rodriguez" target="_blank" rel="nofollow noopener noreferrer" class="footer-link"><i class="fa-brands fa-telegram"></i> Telegram</a>
                         <a href="mailto:jaisonrodriguez@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i> Email</a>
                     </div>
                 </div>
@@ -1269,10 +1270,11 @@
 
                 <div class="footer-bottom">
                     <p>&copy; 2026 Nexora Digital. Todos los derechos reservados.</p>
-                    <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem;">
-                        <a href="legales.html#terminos" class="footer-link" style="font-size: 0.85rem;">Términos y Condiciones</a>
-                        <a href="legales.html#privacidad" class="footer-link" style="font-size: 0.85rem;">Política de Privacidad</a>
-                        <a href="legales.html#exencion" class="footer-link" style="font-size: 0.85rem;">Disclaimer Tecnológico</a>
+                    <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <a href="./legales.html#terminos" class="footer-link" style="font-size: 0.85rem;">Términos y Condiciones</a>
+                        <a href="./legales.html#privacidad" class="footer-link" style="font-size: 0.85rem;">Política de Privacidad</a>
+                        <a href="./legales.html#exencion" class="footer-link" style="font-size: 0.85rem;">Disclaimer Tecnológico</a>
+                        <a href="./.well-known/security.txt" class="footer-link" style="font-size: 0.85rem;" target="_blank" rel="noopener">Security.txt (RFC 9116)</a>
                     </div>
                     <p class="footer-etymology" title="Nex del latín 'lo nuevo' + Ora 'ahora' — fusionamos la sabiduría antigua con tecnología de vanguardia">
                     <i class="fa-solid fa-feather"></i>
@@ -1322,17 +1324,8 @@
     </div>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2/tsparticles.engine.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-basic@2/tsparticles.basic.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-interaction-particles-links@2/tsparticles.interaction.particles.links.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-move-base@2/tsparticles.move.base.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-shape-circle@2/tsparticles.shape.circle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-color@2/tsparticles.updater.color.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-opacity@2/tsparticles.updater.opacity.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-out-modes@2/tsparticles.updater.out-modes.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-updater-size@2/tsparticles.updater.size.min.js"></script>
-    
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
     <script>
         // Exit Intent Modal Logic
         let modalShown = false;

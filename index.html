@@ -7,7 +7,7 @@
     
     <!-- ===== FRONTEND SECURITY (Anti-Hijacking / Anti-Infostealer) ===== -->
     <!-- CSP restringe orígenes de scripts para evitar XSS y fuga de datos -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; frame-ancestors 'none';">
     <!-- Anti-Clickjacking & Security Headers -->
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -1326,18 +1326,5 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js" defer></script>
     <script src="script.js" defer></script>
-    <script>
-        // Exit Intent Modal Logic
-        let modalShown = false;
-        document.addEventListener('mouseleave', function(e) {
-            if (e.clientY < 0 && !modalShown) {
-                document.getElementById('leadModal').classList.add('active');
-                modalShown = true;
-            }
-        });
-        document.getElementById('closeModal').addEventListener('click', function() {
-            document.getElementById('leadModal').classList.remove('active');
-        });
-    </script>
 </body>
 </html>

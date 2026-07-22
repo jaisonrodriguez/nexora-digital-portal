@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilters();
     initFAQ();
     initContactForm();
+    initExitIntentModal();
 });
 
 /* ==========================================================================
@@ -497,3 +498,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadParticlesSafe();
 });
+
+/* ==========================================================================
+   11. EXIT INTENT MODAL
+   ========================================================================== */
+function initExitIntentModal() {
+    let modalShown = false;
+    const leadModal = document.getElementById('leadModal');
+    const closeModal = document.getElementById('closeModal');
+
+    if (!leadModal || !closeModal) return;
+
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 0 && !modalShown) {
+            leadModal.classList.add('active');
+            modalShown = true;
+        }
+    });
+
+    closeModal.addEventListener('click', function() {
+        leadModal.classList.remove('active');
+    });
+}

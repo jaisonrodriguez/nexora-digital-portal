@@ -539,8 +539,9 @@ function initAutoZajunaCheckout() {
 
     const SUPABASE_URL = "https://npvjuhpyqnfltedpxwze.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdmp1aHB5cW5mbHRlZHB4d3plIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI3ODMsImV4cCI6MjA5MTA1ODc4M30.MMsuoaWu_SBgAb4iFVFiZjj2KLPVIqqU8Hg7wtiqlao";
-    const WOMPI_PUB_KEY = 'pub_prod_4WXcd1RM8SRyvmZ6UfENB58W7sZ3dKwf';
-    const WOMPI_INTEGRITY_SECRET = 'prod_integrity_HawPeHqtztV5rRqGdlhXC8wRWRtck2L0';
+    // Modo Sandbox (Pruebas) de Wompi
+    const WOMPI_PUB_KEY = 'pub_test_XFGtz15DATicg93Ao5DunYaYVlKbTODe';
+    const WOMPI_INTEGRITY_SECRET = 'test_integrity_6XoFG5dw2pWpSGTwTzbKgeOlgoHqlhWv';
 
     // 1. Detectar HWID desde los parámetros de la URL (?hwid=AZ-XXXX o #software?hwid=AZ-XXXX)
     try {

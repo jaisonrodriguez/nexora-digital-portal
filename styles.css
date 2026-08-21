@@ -2605,3 +2605,53 @@ a:hover {
   }
 }
 
+/* Wompi Payment Methods Showcase */
+.wompi-methods-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.wompi-method-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.wompi-method-pill:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+.wompi-method-pill i {
+  font-size: 1.1rem;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.wompi-method-pill strong {
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .wompi-methods-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .wompi-methods-showcase {
+    grid-template-columns: 1fr;
+  }
+}
+
+

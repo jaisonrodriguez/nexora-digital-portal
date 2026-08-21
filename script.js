@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initExitIntentModal();
     initAutoZajunaActivation();
+    initWompiPayment();
 });
 
 /* ==========================================================================
@@ -646,4 +647,130 @@ function initAutoZajunaActivation() {
         });
     }
 }
+
+/* ==========================================================================
+   13. PASARELA DE PAGOS WOMPI (AUTOZAJUNA PRO)
+   ========================================================================== */
+function initWompiPayment() {
+    const wompiButtons = document.querySelectorAll('.btn-wompi-pay');
+    if (!wompiButtons.length) return;
+
+    const WOMPI_PUB_KEY = 'pub_prod_4WXcd1RM8SRyvmZ6UfENB58W7sZ3dKwf';
+    const WOMPI_INTEGRITY_SECRET = 'prod_integrity_HawPeHqtztV5rRqGdlhXC8wRWRtck2L0';
+
+    // 1. Cargar script de Wompi Checkout dinámicamente si no existe
+    if (!document.querySelector('script[src="https://checkout.wompi.co/widget.js"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.wompi.co/widget.js';
+        script.async = true;
+        document.body.appendChild(script);
+    }
+
+    // 2. Función para calcular la firma de integridad SHA-256
+    async function calculateIntegritySignature(reference, amountInCents, currency = 'COP') {
+        const text = `${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_SECRET}`;
+        const encoder = new TextEncoder();
+        const data = encoder.encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // 3. Manejar clicks en botones de pago Wompi
+    wompiButtons.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const plan = btn.getAttribute('data-plan') || 'profesional';
+            const name = btn.getAttribute('data-name') || 'AutoZajuna Pro';
+            const amount = parseInt(btn.getAttribute('data-amount') || '150000', 10);
+            const amountInCents = amount * 100;
+            const reference = `AZ_${plan.toUpperCase()}_${Date.now()}`;
+
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Cargando Wompi...';
+
+            try {
+                const signature = await calculateIntegritySignature(reference, amountInCents, 'COP');
+
+                // Asegurar que WidgetCheckout esté disponible
+                if (typeof WidgetCheckout === 'undefined') {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                if (typeof WidgetCheckout === 'undefined') {
+                    throw new Error('El script de Wompi aún no ha terminado de cargar.');
+                }
+
+                const redirectUrl = `${window.location.origin}${window.location.pathname}#activacion-autozajuna`;
+
+                const checkoutConfig = {
+                    currency: 'COP',
+                    amountInCents: amountInCents,
+                    reference: reference,
+                    publicKey: WOMPI_PUB_KEY,
+                    redirectUrl: redirectUrl,
+                    signature: {
+                        integrity: signature
+                    }
+                };
+
+                const checkout = new WidgetCheckout(checkoutConfig);
+
+                checkout.open(function (result) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+
+                    const transaction = result?.transaction;
+                    if (transaction && transaction.status === 'APPROVED') {
+                        // Pre-llenar formulario de activación con el comprobante de Wompi
+                        const paymentCodeInput = document.getElementById('client_payment_code');
+                        const licenseTypeSelect = document.getElementById('license_type');
+                        
+                        if (licenseTypeSelect) licenseTypeSelect.value = 'paid';
+                        if (paymentCodeInput) {
+                            paymentCodeInput.value = `WOMPI-${transaction.id}`;
+                        }
+
+                        // Scroll hacia el activador
+                        const activationSec = document.getElementById('activacion-autozajuna');
+                        if (activationSec) {
+                            activationSec.scrollIntoView({ behavior: 'smooth' });
+                        }
+
+                        alert(`🎉 ¡Pago de ${name} Aprobado Exitosamente (Ref: ${transaction.id})!\n\nPor favor ingresa tu ID de Máquina en el formulario de abajo para generar tu clave serial.`);
+                    } else if (transaction && transaction.status === 'DECLINED') {
+                        alert('❌ La transacción fue rechazada por el banco. Por favor intenta con otro medio de pago.');
+                    }
+                });
+
+            } catch (err) {
+                console.error('Error al iniciar Wompi Checkout:', err);
+                alert('No se pudo abrir el checkout de pagos. Puedes escribirnos a WhatsApp para pagar directamente.');
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        });
+    });
+
+    // 4. Si el usuario regresa de una redirección de Wompi con parámetros (?id=...)
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const wompiTransactionId = urlParams.get('id');
+        if (wompiTransactionId) {
+            const paymentCodeInput = document.getElementById('client_payment_code');
+            const licenseTypeSelect = document.getElementById('license_type');
+            if (licenseTypeSelect) licenseTypeSelect.value = 'paid';
+            if (paymentCodeInput) {
+                paymentCodeInput.value = `WOMPI-${wompiTransactionId}`;
+            }
+            const activationSec = document.getElementById('activacion-autozajuna');
+            if (activationSec) {
+                setTimeout(() => activationSec.scrollIntoView({ behavior: 'smooth' }), 500);
+            }
+        }
+    } catch (e) {
+        // Ignorar si falla lectura de URL
+    }
+}
+
 

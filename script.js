@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initContactForm();
     initExitIntentModal();
+    initAutoZajunaActivation();
 });
 
 /* ==========================================================================
@@ -520,3 +521,129 @@ function initExitIntentModal() {
         leadModal.classList.remove('active');
     });
 }
+
+/* ==========================================================================
+   12. GENERADOR Y ACTIVADOR AUTÓNOMO DE LICENCIAS (AUTOZAJUNA PRO)
+   ========================================================================== */
+function initAutoZajunaActivation() {
+    const form = document.getElementById('license-activation-form');
+    const licenseType = document.getElementById('license_type');
+    const paymentGroup = document.getElementById('group_payment_code');
+    const resultBox = document.getElementById('license-result-box');
+    const btnSubmit = document.getElementById('btn-generate-license');
+    const tokenText = document.getElementById('generated-token-text');
+    const tokenHwid = document.getElementById('token-hwid-text');
+    const btnCopy = document.getElementById('btn-copy-token');
+
+    if (!form) return;
+
+    const SUPABASE_URL = "https://npvjuhpyqnfltedpxwze.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdmp1aHB5cW5mbHRlZHB4d3plIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI3ODMsImV4cCI6MjA5MTA1ODc4M30.MMsuoaWu_SBgAb4iFVFiZjj2KLPVIqqU8Hg7wtiqlao";
+
+    // Ocultar/Mostrar campo de código de pago según tipo
+    if (licenseType && paymentGroup) {
+        licenseType.addEventListener('change', () => {
+            if (licenseType.value === 'trial') {
+                paymentGroup.style.display = 'none';
+            } else {
+                paymentGroup.style.display = 'flex';
+            }
+        });
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const rawHwid = document.getElementById('client_hwid').value.trim().toUpperCase();
+        const doc = document.getElementById('client_doc').value.trim();
+        const type = licenseType ? licenseType.value : 'paid';
+        const paymentCode = document.getElementById('client_payment_code') ? document.getElementById('client_payment_code').value.trim() : '';
+
+        // Formato estándar de HWID
+        let hwid = rawHwid;
+        if (!hwid.startsWith('AZ-') && /^\d+$/.test(hwid)) {
+            hwid = 'AZ-' + hwid;
+        }
+
+        if (!hwid) {
+            alert('Por favor ingresa el ID de tu equipo (Ej: AZ-211929767875277).');
+            return;
+        }
+
+        // Estado de carga
+        const originalBtnText = btnSubmit.innerHTML;
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Conectando con Servidor Cloud...';
+
+        try {
+            // Calcular fecha de expiración
+            const days = (type === 'trial') ? 7 : 30;
+            const expDate = new Date();
+            expDate.setDate(expDate.getDate() + days);
+
+            // Generar clave serial única: AZ-XXXXXXXX-XXXX
+            const randomPart1 = Math.random().toString(16).substring(2, 10).toUpperCase();
+            const randomPart2 = Math.random().toString(16).substring(2, 6).toUpperCase();
+            const token = `AZ-${randomPart1}-${randomPart2}`;
+
+            // Registrar en Supabase Cloud
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/licencias_autozajuna`, {
+                method: 'POST',
+                headers: {
+                    'apikey': SUPABASE_KEY,
+                    'Authorization': `Bearer ${SUPABASE_KEY}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify({
+                    token: token,
+                    fecha_expiracion: expDate.toISOString(),
+                    activo: true,
+                    hwid: hwid,
+                    usuario_zajuna: doc + (paymentCode ? ` [Pago: ${paymentCode}]` : '')
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error en servidor: ${response.status}`);
+            }
+
+            // Mostrar resultado exitoso
+            tokenText.textContent = token;
+            tokenHwid.textContent = hwid;
+            resultBox.style.display = 'block';
+
+            // Scroll suave hacia el resultado
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            btnSubmit.innerHTML = '<i class="fa-solid fa-check"></i> ¡Licencia Generada con Éxito!';
+            setTimeout(() => {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalBtnText;
+            }, 3000);
+
+        } catch (error) {
+            console.error('Error generando licencia:', error);
+            alert('Ocurrió un problema conectando con el servidor de licencias. Por favor verifica tu conexión o contáctanos por WhatsApp.');
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = originalBtnText;
+        }
+    });
+
+    // Botón copiar token
+    if (btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            const token = tokenText.textContent;
+            navigator.clipboard.writeText(token).then(() => {
+                const originalHtml = btnCopy.innerHTML;
+                btnCopy.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+                btnCopy.style.background = '#34d399';
+                setTimeout(() => {
+                    btnCopy.innerHTML = originalHtml;
+                    btnCopy.style.background = '';
+                }, 2000);
+            });
+        });
+    }
+}
+

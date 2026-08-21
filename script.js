@@ -658,15 +658,7 @@ function initWompiPayment() {
     const WOMPI_PUB_KEY = 'pub_prod_4WXcd1RM8SRyvmZ6UfENB58W7sZ3dKwf';
     const WOMPI_INTEGRITY_SECRET = 'prod_integrity_HawPeHqtztV5rRqGdlhXC8wRWRtck2L0';
 
-    // 1. Cargar script de Wompi Checkout dinámicamente si no existe
-    if (!document.querySelector('script[src="https://checkout.wompi.co/widget.js"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.wompi.co/widget.js';
-        script.async = true;
-        document.body.appendChild(script);
-    }
-
-    // 2. Función para calcular la firma de integridad SHA-256
+    // 1. Función para calcular la firma de integridad SHA-256
     async function calculateIntegritySignature(reference, amountInCents, currency = 'COP') {
         const text = `${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_SECRET}`;
         const encoder = new TextEncoder();
@@ -676,7 +668,7 @@ function initWompiPayment() {
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // 3. Manejar clicks en botones de pago Wompi
+    // 2. Manejar clicks en botones de pago Wompi
     wompiButtons.forEach(btn => {
         btn.addEventListener('click', async () => {
             const plan = btn.getAttribute('data-plan') || 'profesional';
@@ -687,21 +679,19 @@ function initWompiPayment() {
 
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Cargando Wompi...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Abriendo Wompi...';
 
             try {
                 const signature = await calculateIntegritySignature(reference, amountInCents, 'COP');
 
-                // Asegurar que WidgetCheckout esté disponible
-                if (typeof WidgetCheckout === 'undefined') {
-                    await new Promise(resolve => setTimeout(resolve, 500));
+                // Asegurar que WidgetCheckout esté listo
+                const CheckoutConstructor = window.WidgetCheckout || (typeof WidgetCheckout !== 'undefined' ? WidgetCheckout : null);
+
+                if (!CheckoutConstructor) {
+                    throw new Error('El script de Wompi aún no ha terminado de cargar. Por favor recarga la página o inténtalo de nuevo.');
                 }
 
-                if (typeof WidgetCheckout === 'undefined') {
-                    throw new Error('El script de Wompi aún no ha terminado de cargar.');
-                }
-
-                const redirectUrl = `${window.location.origin}${window.location.pathname}#activacion-autozajuna`;
+                const redirectUrl = `${window.location.origin}${window.location.pathname}`;
 
                 const checkoutConfig = {
                     currency: 'COP',
@@ -714,7 +704,7 @@ function initWompiPayment() {
                     }
                 };
 
-                const checkout = new WidgetCheckout(checkoutConfig);
+                const checkout = new CheckoutConstructor(checkoutConfig);
 
                 checkout.open(function (result) {
                     btn.disabled = false;

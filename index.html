@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <!-- ===== FRONTEND SECURITY (Anti-Hijacking / Anti-Infostealer) ===== -->
-    <!-- CSP restringe orígenes de scripts para evitar XSS y fuga de datos -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com;">
+    <!-- CSP configurado con soporte para Wompi Checkout, Supabase Cloud y CDN oficiales -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://checkout.wompi.co https://*.wompi.co https://vercel.live; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://checkout.wompi.co; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com https://*.perplexity.ai data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.emailjs.com https://npvjuhpyqnfltedpxwze.supabase.co https://*.supabase.co https://checkout.wompi.co https://*.wompi.co https://production.wompi.co https://api.wompi.co https://vercel.live https://*.vercel.live; frame-src 'self' https://checkout.wompi.co https://*.wompi.co https://vercel.live;">
     <!-- Anti-Clickjacking & Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ===== WOMPI CHECKOUT WIDGET ===== -->
+    <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
 
     <!-- ===== SEO PRIMARIO ===== -->
     <title>Nexora Digital | Desarrollo de Software e IA en Colombia</title>

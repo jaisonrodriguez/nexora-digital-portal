@@ -723,6 +723,87 @@ function initAutoZajunaCheckout() {
             });
         });
     }
+
+    // 6. Formulario de Recuperación de Licencia
+    const recoveryForm = document.getElementById('license-recovery-form');
+    const recoveryQueryInput = document.getElementById('recovery_query');
+    const recoveryBtn = document.getElementById('btn-recovery-submit');
+    const recoveryResultBox = document.getElementById('recovery-result-box');
+
+    if (recoveryForm) {
+        recoveryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = recoveryQueryInput.value.trim();
+            if (!query) return;
+
+            const originalBtnHtml = recoveryBtn.innerHTML;
+            recoveryBtn.disabled = true;
+            recoveryBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Buscando...';
+            recoveryResultBox.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/recuperar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: query })
+                });
+
+                const data = await res.json();
+
+                recoveryBtn.disabled = false;
+                recoveryBtn.innerHTML = originalBtnHtml;
+                recoveryResultBox.style.display = 'block';
+
+                if (res.ok && data.success) {
+                    recoveryResultBox.innerHTML = `
+                        <div class="recovery-success">
+                            <div style="color: #10b981; font-weight: 800; font-size: 1.05rem; margin-bottom: 0.75rem;">
+                                <i class="fa-solid fa-circle-check"></i> ¡Licencia Encontrada y Activa!
+                            </div>
+                            <div class="token-code-row">
+                                <span id="recovered-token-val" class="generated-token">${data.token}</span>
+                                <button type="button" id="btn-copy-recovered" class="btn-copy-token">
+                                    <i class="fa-solid fa-copy"></i> Copiar Clave
+                                </button>
+                            </div>
+                            <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+                                <span>Vigencia restante: <strong style="color: #38bdf8;">${data.days_left} días</strong> (Expira: ${data.expires_at})</span>
+                            </div>
+                        </div>
+                    `;
+
+                    document.getElementById('btn-copy-recovered').addEventListener('click', function() {
+                        navigator.clipboard.writeText(data.token).then(() => {
+                            this.innerHTML = '<i class="fa-solid fa-check"></i> ¡Copiado!';
+                            this.style.background = '#34d399';
+                            setTimeout(() => {
+                                this.innerHTML = '<i class="fa-solid fa-copy"></i> Copiar Clave';
+                                this.style.background = '';
+                            }, 2000);
+                        });
+                    });
+                } else {
+                    recoveryResultBox.innerHTML = `
+                        <div class="recovery-not-found" style="color: #f87171; background: rgba(239, 68, 68, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.3);">
+                            <i class="fa-solid fa-triangle-exclamation"></i> ${data.error || 'No se encontró ninguna licencia activa con los datos ingresados.'}
+                            <div style="margin-top: 0.5rem;">
+                                <a href="https://wa.me/573239306599?text=Hola%20Nexora%2C%20necesito%20ayuda%20para%20recuperar%20mi%20licencia%20de%20AutoZajuna%20Pro" target="_blank" style="color: #38bdf8; font-weight: 700; text-decoration: underline;">
+                                    💬 Contactar soporte por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } catch (err) {
+                recoveryBtn.disabled = false;
+                recoveryBtn.innerHTML = originalBtnHtml;
+                recoveryResultBox.style.display = 'block';
+                recoveryResultBox.innerHTML = `<div style="color: #f87171; padding: 0.5rem;">Ocurrió un error consultando el servidor. Por favor intenta más tarde o escríbenos a WhatsApp.</div>`;
+            }
+        });
+    }
 }
+
 
 

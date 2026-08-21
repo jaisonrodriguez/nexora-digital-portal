@@ -988,6 +988,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Tarjeta de Recuperación de Licencia (Formateo de PC) -->
+                    <div class="license-recovery-box" id="license-recovery-section">
+                        <div class="recovery-header">
+                            <i class="fa-solid fa-arrows-rotate" style="color: #38bdf8; font-size: 1.4rem;"></i>
+                            <div>
+                                <h5>¿Formateaste tu PC o perdiste tu Serial? Recupera tu Licencia</h5>
+                                <p>Ingresa el ID de tu máquina o el correo de compra para consultar tu clave activa en la nube.</p>
+                            </div>
+                        </div>
+                        <form id="license-recovery-form" class="recovery-form-row">
+                            <input type="text" id="recovery_query" placeholder="Ingresa tu ID (Ej: AZ-211929767875277) o tu correo" required>
+                            <button type="submit" id="btn-recovery-submit" class="btn-recovery-cta">
+                                <i class="fa-solid fa-magnifying-glass"></i> Recuperar Serial
+                            </button>
+                        </form>
+                        <div id="recovery-result-box" class="recovery-result-box" style="display: none;"></div>
+                    </div>
                 </div>
             </div>
         </div>

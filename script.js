@@ -537,8 +537,6 @@ function initAutoZajunaCheckout() {
     const btnCopy = document.getElementById('btn-copy-token');
     const pricingWompiBtns = document.querySelectorAll('.btn-wompi-pay');
 
-    const SUPABASE_URL = "https://npvjuhpyqnfltedpxwze.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdmp1aHB5cW5mbHRlZHB4d3plIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI3ODMsImV4cCI6MjA5MTA1ODc4M30.MMsuoaWu_SBgAb4iFVFiZjj2KLPVIqqU8Hg7wtiqlao";
     // Modo Sandbox (Pruebas) de Wompi
     const WOMPI_PUB_KEY = 'pub_test_XFGtz15DATicg93Ao5DunYaYVlKbTODe';
     const WOMPI_INTEGRITY_SECRET = 'test_integrity_6XoFG5dw2pWpSGTwTzbKgeOlgoHqlhWv';
@@ -661,40 +659,31 @@ function initAutoZajunaCheckout() {
 
                     const transaction = result?.transaction;
                     if (transaction && transaction.status === 'APPROVED') {
-                        // Pago 100% verificado por Wompi -> Generar Licencia en Supabase
+                        // Pago 100% verificado por Wompi -> Generar Licencia en Servidor
                         btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registrando Licencia Pro en la Nube...';
 
                         try {
-                            const expDate = new Date();
-                            expDate.setDate(expDate.getDate() + 30); // 30 Días de vigencia
-
-                            const randomPart1 = Math.random().toString(16).substring(2, 10).toUpperCase();
-                            const randomPart2 = Math.random().toString(16).substring(2, 6).toUpperCase();
-                            const token = `AZ-${randomPart1}-${randomPart2}`;
-
-                            const response = await fetch(`${SUPABASE_URL}/rest/v1/licencias_autozajuna`, {
+                            const apiResponse = await fetch('/api/activar', {
                                 method: 'POST',
                                 headers: {
-                                    'apikey': SUPABASE_KEY,
-                                    'Authorization': `Bearer ${SUPABASE_KEY}`,
-                                    'Content-Type': 'application/json',
-                                    'Prefer': 'return=minimal'
+                                    'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify({
-                                    token: token,
-                                    fecha_expiracion: expDate.toISOString(),
-                                    activo: true,
                                     hwid: rawHwid,
-                                    usuario_zajuna: `${email} [Wompi: ${transaction.id} | Plan: ${plan.toUpperCase()}]`
+                                    email: email,
+                                    transactionId: transaction.id,
+                                    plan: plan
                                 })
                             });
 
-                            if (!response.ok) {
-                                throw new Error(`Error en servidor Supabase: ${response.status}`);
+                            const data = await apiResponse.json();
+
+                            if (!apiResponse.ok || !data.success) {
+                                throw new Error(data.error || 'Error al emitir la licencia en el servidor.');
                             }
 
                             // Mostrar Clave Oficial generada
-                            tokenText.textContent = token;
+                            tokenText.textContent = data.token;
                             tokenHwid.textContent = rawHwid;
                             resultBox.style.display = 'block';
                             resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });

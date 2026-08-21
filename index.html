@@ -860,10 +860,10 @@
             <div class="software-activation-wrapper animate-on-scroll" id="activacion-autozajuna">
                 <div class="activation-header">
                     <span class="badge-scarcity" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #10b981;">
-                        <i class="fa-solid fa-bolt"></i> Sistema 100% Autónomo
+                        <i class="fa-solid fa-shield-halved"></i> Compra Segura & Activación Instantánea
                     </span>
-                    <h3 class="activation-title">¿Cómo Descargar, Instalar y Activar AutoZajuna Pro?</h3>
-                    <p class="activation-subtitle">Proceso automatizado y sin intermediarios. Sigue estos 4 pasos para comenzar en menos de 2 minutos:</p>
+                    <h3 class="activation-title">¿Cómo Adquirir, Descargar y Activar AutoZajuna Pro?</h3>
+                    <p class="activation-subtitle">Proceso 100% automatizado con pasarela de pagos oficial Wompi y vinculación en la nube:</p>
                 </div>
 
                 <!-- Pasos de Activación (Bento Grid) -->
@@ -874,7 +874,7 @@
                         <h4>Descarga el Instalador</h4>
                         <p>Descarga la última versión oficial de AutoZajuna Pro para Windows y ejecútala en tu computador.</p>
                         <a href="https://github.com/j4150nrodriguez-cloud/ZajunaBot-Releases/releases/download/v2.5.0/AutoZajuna_Instalador_v2.5.exe" class="btn-download-step" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-windows"></i> Descargar .EXE Oficial
+                            <i class="fa-brands fa-windows"></i> Descargar Instalador .EXE
                         </a>
                     </div>
 
@@ -882,73 +882,75 @@
                         <div class="step-badge">Paso 2</div>
                         <div class="step-icon"><i class="fa-solid fa-laptop-code"></i></div>
                         <h4>Obtén tu ID de Equipo</h4>
-                        <p>Abre AutoZajuna en tu PC. En la pantalla inicial verás tu código único <code>AZ-XXXXXXXX</code>. Haz clic en <strong>"Copiar ID"</strong>.</p>
+                        <p>Abre AutoZajuna en tu PC. En la pantalla inicial copia tu código <code>AZ-XXXXXXXX</code> o haz clic en <strong>"Comprar en Nexora"</strong>.</p>
                     </div>
 
                     <div class="step-card">
                         <div class="step-badge">Paso 3</div>
-                        <div class="step-icon"><i class="fa-solid fa-key"></i></div>
-                        <h4>Genera tu Clave en Nexora</h4>
-                        <p>Pega tu ID de equipo en el formulario de abajo. Nuestro portal validará tu registro y creará tu <strong>Serial Pro</strong> al instante.</p>
+                        <div class="step-icon"><i class="fa-solid fa-credit-card"></i></div>
+                        <h4>Paga Seguro con Wompi</h4>
+                        <p>Ingresa tu ID de equipo y paga con <strong>Nequi, PSE, Bancolombia o Tarjeta</strong> a través de nuestra pasarela protegida.</p>
                     </div>
 
                     <div class="step-card">
                         <div class="step-badge">Paso 4</div>
                         <div class="step-icon"><i class="fa-solid fa-circle-check"></i></div>
-                        <h4>Pega tu Serial y Califica</h4>
-                        <p>Pega la clave generada en AutoZajuna y pulsa <strong>"Activar"</strong>. ¡Todas las herramientas y la IA quedarán desbloqueadas!</p>
+                        <h4>Recibe tu Clave y Activa</h4>
+                        <p>Al confirmarse el pago recibirás tu <strong>Serial Pro Oficial</strong>. Pégalo en el programa y ¡empieza a calificar con IA!</p>
                     </div>
                 </div>
 
-                <!-- Formulario Interactivo de Generación / Activación -->
-                <div class="license-generator-card">
+                <!-- Módulo Seguro de Checkout y Activación -->
+                <div class="license-generator-card" id="modulo-checkout-autozajuna">
                     <div class="generator-header">
-                        <div class="gen-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="gen-icon"><i class="fa-solid fa-bolt"></i></div>
                         <div>
-                            <h4>Portal Autónomo de Activación de Licencias</h4>
-                            <p>Genera y vincula tu clave oficial de AutoZajuna Pro directamente con nuestro servidor Cloud.</p>
+                            <h4>Checkout y Activación Automática con Wompi</h4>
+                            <p>Ingresa el ID de tu equipo para procesar el pago y emitir tu clave de licencia Pro de inmediato.</p>
                         </div>
                     </div>
 
-                    <form id="license-activation-form" class="generator-form">
+                    <form id="license-checkout-form" class="generator-form">
                         <div class="form-row-2">
                             <div class="form-group">
-                                <label for="client_hwid"><i class="fa-solid fa-desktop"></i> ID de Máquina / Computador (Obligatorio)</label>
-                                <input type="text" id="client_hwid" placeholder="Ej: AZ-211929767875277" required autocomplete="off">
-                                <small class="form-hint">Lo obtienes al abrir AutoZajuna Pro en tu computador.</small>
+                                <label for="checkout_hwid"><i class="fa-solid fa-desktop"></i> ID de Máquina / Equipo (Obligatorio)</label>
+                                <input type="text" id="checkout_hwid" placeholder="Ej: AZ-211929767875277" required autocomplete="off">
+                                <small class="form-hint">Abre AutoZajuna Pro en tu PC y haz clic en "Copiar ID".</small>
                             </div>
                             <div class="form-group">
-                                <label for="client_doc"><i class="fa-solid fa-id-card"></i> Cédula / Identificación o Correo</label>
-                                <input type="text" id="client_doc" placeholder="Ej: 1015999864 o tu@correo.com" required>
-                                <small class="form-hint">Para registrar tu titularidad como instructor.</small>
+                                <label for="checkout_email"><i class="fa-solid fa-envelope"></i> Correo Electrónico del Titular</label>
+                                <input type="email" id="checkout_email" placeholder="tu@correo.com" required>
+                                <small class="form-hint">Aquí recibirás el comprobante de compra y respaldo.</small>
                             </div>
                         </div>
 
                         <div class="form-row-2">
                             <div class="form-group">
-                                <label for="license_type"><i class="fa-solid fa-box-open"></i> Tipo de Activación</label>
-                                <select id="license_type">
-                                    <option value="trial">Prueba Demo Gratuita (7 Días)</option>
-                                    <option value="paid" selected>Licencia Comprada (Mensual / Trimestral / Anual)</option>
+                                <label for="checkout_plan"><i class="fa-solid fa-box-open"></i> Plan a Adquirir</label>
+                                <select id="checkout_plan">
+                                    <option value="basico" data-price="80000">Plan Básico — $80.000 COP/mes (1 Equipo)</option>
+                                    <option value="profesional" data-price="150000" selected>Plan Profesional — $150.000 COP/mes (1 Equipo + IA Gemini)</option>
+                                    <option value="enterprise" data-price="350000">Plan Enterprise — $350.000 COP/mes (3 Equipos + Soporte VIP)</option>
                                 </select>
                             </div>
-                            <div class="form-group" id="group_payment_code">
-                                <label for="client_payment_code"><i class="fa-solid fa-receipt"></i> Código de Compra / Referencia de Pago</label>
-                                <input type="text" id="client_payment_code" placeholder="Ej: Referencia Nequi/Daviplata o código de compra">
-                                <small class="form-hint">Ingresa tu número de comprobante o referencia de pago.</small>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-shield-check"></i> Métodos de Pago Habilitados</label>
+                                <div style="padding: 0.85rem 1.2rem; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glass-border); border-radius: var(--border-radius-md); font-size: 0.88rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-lock" style="color: #10b981;"></i> Wompi: Nequi, PSE, Bancolombia, Tarjeta Débito/Crédito
+                                </div>
                             </div>
                         </div>
 
-                        <button type="submit" id="btn-generate-license" class="btn-generate-cta">
-                            <i class="fa-solid fa-bolt"></i> Generar y Activar Clave Serial Ahora
+                        <button type="submit" id="btn-start-wompi-checkout" class="btn-generate-cta">
+                            <i class="fa-solid fa-lock"></i> Proceder al Pago Seguro con Wompi
                         </button>
                     </form>
 
-                    <!-- Resultado de la Licencia Generada -->
+                    <!-- Resultado de la Licencia (SOLO tras pago aprobado por Wompi) -->
                     <div id="license-result-box" class="license-result-box" style="display: none;">
-                        <div class="result-badge"><i class="fa-solid fa-circle-check"></i> ¡Licencia Generada y Registrada Exitosamente!</div>
+                        <div class="result-badge"><i class="fa-solid fa-circle-check"></i> ¡Pago Aprobado y Licencia Registrada con Éxito!</div>
                         <div class="result-content">
-                            <div class="token-display-label">Tu Clave de Licencia Pro (Serial Oficial):</div>
+                            <div class="token-display-label">Tu Clave Serial Oficial Pro:</div>
                             <div class="token-code-row">
                                 <span id="generated-token-text" class="generated-token">AZ-XXXXXXXX-XXXX</span>
                                 <button type="button" id="btn-copy-token" class="btn-copy-token">
@@ -956,11 +958,11 @@
                                 </button>
                             </div>
                             <div class="token-info-footer">
-                                <span><i class="fa-solid fa-laptop"></i> Equipo: <strong id="token-hwid-text">AZ-...</strong></span>
+                                <span><i class="fa-solid fa-laptop"></i> Vinculada al equipo: <strong id="token-hwid-text">AZ-...</strong></span>
                                 <span><i class="fa-solid fa-shield-halved"></i> Estado: <strong style="color: #10b981;">Activa en la Nube</strong></span>
                             </div>
                             <div class="token-action-prompt">
-                                👉 <strong>Último paso:</strong> Abre <strong>AutoZajuna Pro</strong> en tu PC, pega esta clave en la casilla de serial y haz clic en <strong>"Activar y Continuar"</strong>.
+                                👉 <strong>Paso Final:</strong> Abre <strong>AutoZajuna Pro</strong> en tu computador, pega esta clave en la casilla de serial y haz clic en <strong>"Activar y Continuar"</strong>.
                             </div>
                         </div>
                     </div>

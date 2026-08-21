@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initContactForm();
     initExitIntentModal();
-    initAutoZajunaActivation();
-    initWompiPayment();
+    initAutoZajunaCheckout();
 });
 
 /* ==========================================================================
@@ -524,114 +523,202 @@ function initExitIntentModal() {
 }
 
 /* ==========================================================================
-   12. GENERADOR Y ACTIVADOR AUTÓNOMO DE LICENCIAS (AUTOZAJUNA PRO)
+   12. CHECKOUT SEGURO WOMPI Y ACTIVACIÓN DE LICENCIAS AUTOZAJUNA PRO
    ========================================================================== */
-function initAutoZajunaActivation() {
-    const form = document.getElementById('license-activation-form');
-    const licenseType = document.getElementById('license_type');
-    const paymentGroup = document.getElementById('group_payment_code');
+function initAutoZajunaCheckout() {
+    const form = document.getElementById('license-checkout-form');
+    const hwidInput = document.getElementById('checkout_hwid');
+    const emailInput = document.getElementById('checkout_email');
+    const planSelect = document.getElementById('checkout_plan');
     const resultBox = document.getElementById('license-result-box');
-    const btnSubmit = document.getElementById('btn-generate-license');
+    const btnSubmit = document.getElementById('btn-start-wompi-checkout');
     const tokenText = document.getElementById('generated-token-text');
     const tokenHwid = document.getElementById('token-hwid-text');
     const btnCopy = document.getElementById('btn-copy-token');
-
-    if (!form) return;
+    const pricingWompiBtns = document.querySelectorAll('.btn-wompi-pay');
 
     const SUPABASE_URL = "https://npvjuhpyqnfltedpxwze.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdmp1aHB5cW5mbHRlZHB4d3plIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI3ODMsImV4cCI6MjA5MTA1ODc4M30.MMsuoaWu_SBgAb4iFVFiZjj2KLPVIqqU8Hg7wtiqlao";
+    const WOMPI_PUB_KEY = 'pub_prod_4WXcd1RM8SRyvmZ6UfENB58W7sZ3dKwf';
+    const WOMPI_INTEGRITY_SECRET = 'prod_integrity_HawPeHqtztV5rRqGdlhXC8wRWRtck2L0';
 
-    // Ocultar/Mostrar campo de código de pago según tipo
-    if (licenseType && paymentGroup) {
-        licenseType.addEventListener('change', () => {
-            if (licenseType.value === 'trial') {
-                paymentGroup.style.display = 'none';
-            } else {
-                paymentGroup.style.display = 'flex';
+    // 1. Detectar HWID desde los parámetros de la URL (?hwid=AZ-XXXX o #software?hwid=AZ-XXXX)
+    try {
+        const fullUrl = window.location.href;
+        let detectedHwid = null;
+
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('hwid')) {
+            detectedHwid = searchParams.get('hwid');
+        } else if (fullUrl.includes('hwid=')) {
+            const match = fullUrl.match(/hwid=([^&#]+)/);
+            if (match) detectedHwid = decodeURIComponent(match[1]);
+        }
+
+        if (detectedHwid && hwidInput) {
+            let cleanHwid = detectedHwid.trim().toUpperCase();
+            if (!cleanHwid.startsWith('AZ-') && /^\d+$/.test(cleanHwid)) {
+                cleanHwid = 'AZ-' + cleanHwid;
+            }
+            hwidInput.value = cleanHwid;
+
+            // Scroll suave hacia el módulo de compra
+            setTimeout(() => {
+                const checkoutSec = document.getElementById('modulo-checkout-autozajuna');
+                if (checkoutSec) checkoutSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 600);
+        }
+    } catch (e) {
+        console.error('Error detectando HWID de URL:', e);
+    }
+
+    // 2. Conectar los botones de las tarjetas de precios con el selector
+    pricingWompiBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const plan = btn.getAttribute('data-plan');
+            if (planSelect && plan) {
+                planSelect.value = plan;
+            }
+            const checkoutSec = document.getElementById('modulo-checkout-autozajuna');
+            if (checkoutSec) {
+                checkoutSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            if (hwidInput && !hwidInput.value) {
+                hwidInput.focus();
+            } else if (emailInput && !emailInput.value) {
+                emailInput.focus();
+            }
+        });
+    });
+
+    // 3. Función criptográfica SHA-256 para la firma de integridad de Wompi
+    async function calculateIntegritySignature(reference, amountInCents, currency = 'COP') {
+        const text = `${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_SECRET}`;
+        const encoder = new TextEncoder();
+        const data = encoder.encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // 4. Manejo del formulario de Checkout y Pago Seguro
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            let rawHwid = hwidInput.value.trim().toUpperCase();
+            const email = emailInput.value.trim();
+            const selectedOption = planSelect.options[planSelect.selectedIndex];
+            const plan = planSelect.value;
+            const amount = parseInt(selectedOption.getAttribute('data-price') || '150000', 10);
+            const amountInCents = amount * 100;
+
+            if (!rawHwid.startsWith('AZ-') && /^\d+$/.test(rawHwid)) {
+                rawHwid = 'AZ-' + rawHwid;
+            }
+
+            if (!rawHwid || rawHwid.length < 5) {
+                alert('Por favor ingresa el ID de tu equipo (Ej: AZ-211929767875277). Lo encuentras al abrir AutoZajuna Pro.');
+                hwidInput.focus();
+                return;
+            }
+
+            const reference = `AZ_${plan.toUpperCase()}_${Date.now()}`;
+            const originalBtnText = btnSubmit.innerHTML;
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Conectando con Wompi...';
+
+            try {
+                const signature = await calculateIntegritySignature(reference, amountInCents, 'COP');
+
+                const CheckoutConstructor = window.WidgetCheckout || (typeof WidgetCheckout !== 'undefined' ? WidgetCheckout : null);
+                if (!CheckoutConstructor) {
+                    throw new Error('El script de Wompi aún no ha terminado de cargar.');
+                }
+
+                const redirectUrl = `${window.location.origin}${window.location.pathname}#activacion-autozajuna`;
+
+                const checkoutConfig = {
+                    currency: 'COP',
+                    amountInCents: amountInCents,
+                    reference: reference,
+                    publicKey: WOMPI_PUB_KEY,
+                    redirectUrl: redirectUrl,
+                    customerData: {
+                        email: email
+                    },
+                    signature: {
+                        integrity: signature
+                    }
+                };
+
+                const checkout = new CheckoutConstructor(checkoutConfig);
+
+                checkout.open(async function (result) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = originalBtnText;
+
+                    const transaction = result?.transaction;
+                    if (transaction && transaction.status === 'APPROVED') {
+                        // Pago 100% verificado por Wompi -> Generar Licencia en Supabase
+                        btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registrando Licencia Pro en la Nube...';
+
+                        try {
+                            const expDate = new Date();
+                            expDate.setDate(expDate.getDate() + 30); // 30 Días de vigencia
+
+                            const randomPart1 = Math.random().toString(16).substring(2, 10).toUpperCase();
+                            const randomPart2 = Math.random().toString(16).substring(2, 6).toUpperCase();
+                            const token = `AZ-${randomPart1}-${randomPart2}`;
+
+                            const response = await fetch(`${SUPABASE_URL}/rest/v1/licencias_autozajuna`, {
+                                method: 'POST',
+                                headers: {
+                                    'apikey': SUPABASE_KEY,
+                                    'Authorization': `Bearer ${SUPABASE_KEY}`,
+                                    'Content-Type': 'application/json',
+                                    'Prefer': 'return=minimal'
+                                },
+                                body: JSON.stringify({
+                                    token: token,
+                                    fecha_expiracion: expDate.toISOString(),
+                                    activo: true,
+                                    hwid: rawHwid,
+                                    usuario_zajuna: `${email} [Wompi: ${transaction.id} | Plan: ${plan.toUpperCase()}]`
+                                })
+                            });
+
+                            if (!response.ok) {
+                                throw new Error(`Error en servidor Supabase: ${response.status}`);
+                            }
+
+                            // Mostrar Clave Oficial generada
+                            tokenText.textContent = token;
+                            tokenHwid.textContent = rawHwid;
+                            resultBox.style.display = 'block';
+                            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                            btnSubmit.innerHTML = '<i class="fa-solid fa-circle-check"></i> ¡Licencia Generada con Éxito!';
+
+                        } catch (supaErr) {
+                            console.error('Error registrando licencia:', supaErr);
+                            alert(`Tu pago fue aprobado por Wompi (Ref: ${transaction.id}), pero ocurrió una demora al registrar la licencia. Por favor envíanos un WhatsApp con tu referencia para entregártela de inmediato.`);
+                        }
+                    } else if (transaction && transaction.status === 'DECLINED') {
+                        alert('❌ El pago fue rechazado por la entidad bancaria. Por favor intenta con otro medio de pago (Nequi, PSE o Tarjeta).');
+                    }
+                });
+
+            } catch (err) {
+                console.error('Error al abrir Wompi Checkout:', err);
+                alert('No se pudo abrir el checkout de pagos. Puedes escribirnos a WhatsApp para pagar directamente.');
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalBtnText;
             }
         });
     }
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const rawHwid = document.getElementById('client_hwid').value.trim().toUpperCase();
-        const doc = document.getElementById('client_doc').value.trim();
-        const type = licenseType ? licenseType.value : 'paid';
-        const paymentCode = document.getElementById('client_payment_code') ? document.getElementById('client_payment_code').value.trim() : '';
-
-        // Formato estándar de HWID
-        let hwid = rawHwid;
-        if (!hwid.startsWith('AZ-') && /^\d+$/.test(hwid)) {
-            hwid = 'AZ-' + hwid;
-        }
-
-        if (!hwid) {
-            alert('Por favor ingresa el ID de tu equipo (Ej: AZ-211929767875277).');
-            return;
-        }
-
-        // Estado de carga
-        const originalBtnText = btnSubmit.innerHTML;
-        btnSubmit.disabled = true;
-        btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Conectando con Servidor Cloud...';
-
-        try {
-            // Calcular fecha de expiración
-            const days = (type === 'trial') ? 7 : 30;
-            const expDate = new Date();
-            expDate.setDate(expDate.getDate() + days);
-
-            // Generar clave serial única: AZ-XXXXXXXX-XXXX
-            const randomPart1 = Math.random().toString(16).substring(2, 10).toUpperCase();
-            const randomPart2 = Math.random().toString(16).substring(2, 6).toUpperCase();
-            const token = `AZ-${randomPart1}-${randomPart2}`;
-
-            // Registrar en Supabase Cloud
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/licencias_autozajuna`, {
-                method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Authorization': `Bearer ${SUPABASE_KEY}`,
-                    'Content-Type': 'application/json',
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    token: token,
-                    fecha_expiracion: expDate.toISOString(),
-                    activo: true,
-                    hwid: hwid,
-                    usuario_zajuna: doc + (paymentCode ? ` [Pago: ${paymentCode}]` : '')
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`Error en servidor: ${response.status}`);
-            }
-
-            // Mostrar resultado exitoso
-            tokenText.textContent = token;
-            tokenHwid.textContent = hwid;
-            resultBox.style.display = 'block';
-
-            // Scroll suave hacia el resultado
-            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            btnSubmit.innerHTML = '<i class="fa-solid fa-check"></i> ¡Licencia Generada con Éxito!';
-            setTimeout(() => {
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = originalBtnText;
-            }, 3000);
-
-        } catch (error) {
-            console.error('Error generando licencia:', error);
-            alert('Ocurrió un problema conectando con el servidor de licencias. Por favor verifica tu conexión o contáctanos por WhatsApp.');
-            btnSubmit.disabled = false;
-            btnSubmit.innerHTML = originalBtnText;
-        }
-    });
-
-    // Botón copiar token
+    // 5. Botón Copiar Clave
     if (btnCopy) {
         btnCopy.addEventListener('click', () => {
             const token = tokenText.textContent;
@@ -645,121 +732,6 @@ function initAutoZajunaActivation() {
                 }, 2000);
             });
         });
-    }
-}
-
-/* ==========================================================================
-   13. PASARELA DE PAGOS WOMPI (AUTOZAJUNA PRO)
-   ========================================================================== */
-function initWompiPayment() {
-    const wompiButtons = document.querySelectorAll('.btn-wompi-pay');
-    if (!wompiButtons.length) return;
-
-    const WOMPI_PUB_KEY = 'pub_prod_4WXcd1RM8SRyvmZ6UfENB58W7sZ3dKwf';
-    const WOMPI_INTEGRITY_SECRET = 'prod_integrity_HawPeHqtztV5rRqGdlhXC8wRWRtck2L0';
-
-    // 1. Función para calcular la firma de integridad SHA-256
-    async function calculateIntegritySignature(reference, amountInCents, currency = 'COP') {
-        const text = `${reference}${amountInCents}${currency}${WOMPI_INTEGRITY_SECRET}`;
-        const encoder = new TextEncoder();
-        const data = encoder.encode(text);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    // 2. Manejar clicks en botones de pago Wompi
-    wompiButtons.forEach(btn => {
-        btn.addEventListener('click', async () => {
-            const plan = btn.getAttribute('data-plan') || 'profesional';
-            const name = btn.getAttribute('data-name') || 'AutoZajuna Pro';
-            const amount = parseInt(btn.getAttribute('data-amount') || '150000', 10);
-            const amountInCents = amount * 100;
-            const reference = `AZ_${plan.toUpperCase()}_${Date.now()}`;
-
-            const originalText = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Abriendo Wompi...';
-
-            try {
-                const signature = await calculateIntegritySignature(reference, amountInCents, 'COP');
-
-                // Asegurar que WidgetCheckout esté listo
-                const CheckoutConstructor = window.WidgetCheckout || (typeof WidgetCheckout !== 'undefined' ? WidgetCheckout : null);
-
-                if (!CheckoutConstructor) {
-                    throw new Error('El script de Wompi aún no ha terminado de cargar. Por favor recarga la página o inténtalo de nuevo.');
-                }
-
-                const redirectUrl = `${window.location.origin}${window.location.pathname}`;
-
-                const checkoutConfig = {
-                    currency: 'COP',
-                    amountInCents: amountInCents,
-                    reference: reference,
-                    publicKey: WOMPI_PUB_KEY,
-                    redirectUrl: redirectUrl,
-                    signature: {
-                        integrity: signature
-                    }
-                };
-
-                const checkout = new CheckoutConstructor(checkoutConfig);
-
-                checkout.open(function (result) {
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-
-                    const transaction = result?.transaction;
-                    if (transaction && transaction.status === 'APPROVED') {
-                        // Pre-llenar formulario de activación con el comprobante de Wompi
-                        const paymentCodeInput = document.getElementById('client_payment_code');
-                        const licenseTypeSelect = document.getElementById('license_type');
-                        
-                        if (licenseTypeSelect) licenseTypeSelect.value = 'paid';
-                        if (paymentCodeInput) {
-                            paymentCodeInput.value = `WOMPI-${transaction.id}`;
-                        }
-
-                        // Scroll hacia el activador
-                        const activationSec = document.getElementById('activacion-autozajuna');
-                        if (activationSec) {
-                            activationSec.scrollIntoView({ behavior: 'smooth' });
-                        }
-
-                        alert(`🎉 ¡Pago de ${name} Aprobado Exitosamente (Ref: ${transaction.id})!\n\nPor favor ingresa tu ID de Máquina en el formulario de abajo para generar tu clave serial.`);
-                    } else if (transaction && transaction.status === 'DECLINED') {
-                        alert('❌ La transacción fue rechazada por el banco. Por favor intenta con otro medio de pago.');
-                    }
-                });
-
-            } catch (err) {
-                console.error('Error al iniciar Wompi Checkout:', err);
-                alert('No se pudo abrir el checkout de pagos. Puedes escribirnos a WhatsApp para pagar directamente.');
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-            }
-        });
-    });
-
-    // 4. Si el usuario regresa de una redirección de Wompi con parámetros (?id=...)
-    try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const wompiTransactionId = urlParams.get('id');
-        if (wompiTransactionId) {
-            const paymentCodeInput = document.getElementById('client_payment_code');
-            const licenseTypeSelect = document.getElementById('license_type');
-            if (licenseTypeSelect) licenseTypeSelect.value = 'paid';
-            if (paymentCodeInput) {
-                paymentCodeInput.value = `WOMPI-${wompiTransactionId}`;
-            }
-            const activationSec = document.getElementById('activacion-autozajuna');
-            if (activationSec) {
-                setTimeout(() => activationSec.scrollIntoView({ behavior: 'smooth' }), 500);
-            }
-        }
-    } catch (e) {
-        // Ignorar si falla lectura de URL
     }
 }
 
